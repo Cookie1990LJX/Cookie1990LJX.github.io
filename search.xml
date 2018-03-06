@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[hexo图片放置七牛云]]></title>
+    <url>%2F2018%2F03%2F06%2Fhexo%E5%9B%BE%E7%89%87%E6%94%BE%E7%BD%AE%E4%B8%83%E7%89%9B%E4%BA%91%2F</url>
+    <content type="text"><![CDATA[其实这是一个测试我配置完的博文，七牛放置图片很简单，百度一下就很多了。]]></content>
+      <tags>
+        <tag>-hexo记录</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[SDWebImage缓存图片更新]]></title>
+    <url>%2F2018%2F03%2F05%2FSDWebImage%E7%BC%93%E5%AD%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%96%B0%2F</url>
+    <content type="text"><![CDATA[我的朋友最近问我SDWebImage缓存的问题，就写了一篇小Blog，记录一下。 首先，打开浏览器，Google一下SDWebImage更新缓存图片。 嗯嗯，你得到了一个回答，内容大致如下： 12345dispatch_async(dispatch_get_global_queue(0, 0), ^&#123; dispatch_async(dispatch_get_main_queue(), ^&#123; [self.iconView sd_setImageWithURL:[NSURL URLWithString:URL(myModel.icon)] placeholderImage:nil options:SDWebImageRefreshCached]; &#125;);&#125;); SDWebImageRefreshCached看字面意思就是更新缓存嘛，SD的官方也是说用这个方法的啊，看起来很简单嘛，然而事情没有你想的那么简单，你会发现问题如下: 1、图片没有更新。2、图片没有了。3、XXXXXX等问题。 仔细看看源码的注解 1234567if (image &amp;&amp; options &amp; SDWebImageRefreshCached) &#123; dispatch_main_sync_safe(^&#123; // If image was found in the cache but SDWebImageRefreshCached is provided, notify about the cached image // AND try to re-download it in order to let a chance to NSURLCache to refresh it from server. completedBlock(image, nil, cacheType, YES, url); &#125;);&#125; 说是如果缓存中有图片先用，然后图片有更新让NSURLCache从服务器下载新的，来后来我仔细Google一下，服务器需要支持Cache-Control，SDWebImageRefreshCached这个属性才会生效，打开终端，输入 curl 图片url –head 看看有没有Cache-Control:max-age=xxx；如果不存在说明服务不支持，这个xxx就是图片缓存有效时长，设置的时间短呢，很次请求都要去刷新图片，是不是感觉SD的图片缓存的功能似乎没有用了呢。时间长了改变图片不会刷新，很纠结的问题。 想来想去解决方案有几种方法 1、用SDWebImageCacheMemoryOnly属性，每次大退之后呢，缓存清除了。重新启动后所有图片要重新加载。或者在启动配置分类里写[[SDImageCache sharedImageCache] clearDisk]这个方法是一样的。 2、服务器更换图片加后缀，比如最开始的图片叫1.png，更新图片后改名为1_1.png这样图片的Url改变了，就会重新请求。 3、也是目前比较高逼格的。还是使用SDWebImageRefreshCached属性，需要服务端支持一下下。curl之后拿到如下的结果，发现有ETag和Last-Modified。 HTTP/1.1 200 OK Server: nginx Date: Mon, 05 Mar 2018 10:14:57 GMT Content-Type: image/png;charset=UTF-8 Content-Length: 4469 Connection: keep-alive Access-Control-Allow-Origin: * Accept-Ranges: bytes ETag: W/“4469-1517398918000” Last-Modified: Wed, 31 Jan 2018 11:41:58 GMT 网上漫天的贴了一段相同的代码 123456789101112131415161718192021222324252627282930313233343536373839SDWebImageDownloader *imgDownloader = SDWebImageManager.sharedManager.imageDownloader;imgDownloader.headersFilter = ^NSDictionary *(NSURL *url, NSDictionary *headers) &#123; NSFileManager *fm = [[NSFileManager alloc] init]; NSString *imgKey = [SDWebImageManager.sharedManager cacheKeyForURL:url]; NSString *imgPath = [SDWebImageManager.sharedManager.imageCache defaultCachePathForKey:imgKey]; NSDictionary *fileAttr = [fm attributesOfItemAtPath:imgPath error:nil]; NSMutableDictionary *mutableHeaders = [headers mutableCopy]; NSDate *lastModifiedDate = nil; if (fileAttr.count &gt; 0) &#123; if (fileAttr.count &gt; 0) &#123; lastModifiedDate = (NSDate *)fileAttr[NSFileModificationDate]; &#125; &#125; NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; formatter.timeZone = [NSTimeZone timeZoneWithAbbreviation:@"GMT"]; formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]; formatter.dateFormat = @"EEE, dd MMM yyyy HH:mm:ss z"; NSString *lastModifiedStr = [formatter stringFromDate:lastModifiedDate]; lastModifiedStr = lastModifiedStr.length &gt; 0 ? lastModifiedStr : @""; [mutableHeaders setValue:lastModifiedStr forKey:@"If-Modified-Since"]; return mutableHeaders;&#125;; 嗯，加在启动的配置项里。然后你发现你的图片记载并不好使。他们说是需要服务端支持，如果图片有更新返回code200，返回新的ETag和Last-Modified，如果没有更新呢，返回304。SD上面有一段对304的判断： 1234567891011121314//'304 Not Modified' is an exceptional oneif (![response respondsToSelector:@selector(statusCode)] || ([((NSHTTPURLResponse *)response) statusCode] &lt; 400 &amp;&amp; [((NSHTTPURLResponse *)response) statusCode] != 304)) &#123; NSInteger expected = response.expectedContentLength &gt; 0 ? (NSInteger)response.expectedContentLength : 0; self.expectedSize = expected; if (self.progressBlock) &#123; self.progressBlock(0, expected); &#125; self.imageData = [[NSMutableData alloc] initWithCapacity:expected]; self.response = response; dispatch_async(dispatch_get_main_queue(), ^&#123; [[NSNotificationCenter defaultCenter] postNotificationName:SDWebImageDownloadReceiveResponseNotification object:self]; &#125;);&#125; 如果是304，就说明没有新的图片。。。我们服务器估计没有304的判断，所以我也没有做验证，毕竟我是个新手，验证还是要靠你们，晚上8点了，就写这么多了，有问题的话大佬们指出下，我再去重新看一遍。]]></content>
+      <tags>
+        <tag>-OC进阶</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[开始写博客]]></title>
+    <url>%2F2018%2F03%2F05%2F%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[我的朋友去面试的时候，有一些面试官问到是否有Github和Blog。 个人感觉，现在的Github上垃圾太多了，一搜索一万来个东西，有2、3个能用的就不错了。所以现在很少上Github上down代码来看，都是在Stackoverflow瞎逛。 以前很多东西都是放在脑子里的，出现问题会微微的有一点印象，随便Google下，就可以了。最近工作不是那么稳定，有点想去大佬的地方呆呆，学习一点东西的想法。所以重拾个人博客，至于Github，自己搭建过很多的框架，每次都不满意，最近又开始新的旅程。等我在自己的水平上，搭建完自己满意的东西，会把平时用的都搞上去，然后在上传。亲们，我只是一个小渣渣，不好的地方请不要打我，先行谢过！！！]]></content>
+      <tags>
+        <tag>-杂记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[C++创建新类如何关联到main.cpp上]]></title>
+    <url>%2F2016%2F11%2F15%2FC-%E5%88%9B%E5%BB%BA%E6%96%B0%E7%B1%BB%E5%A6%82%E4%BD%95%E5%85%B3%E8%81%94%E5%88%B0main-cpp%E4%B8%8A%2F</url>
+    <content type="text"><![CDATA[对于无C++基础的人来说，新建一个.h和.cpp如何与main.cpp关联是一脸懵逼的状态。 本人用mac的Xcode来学习C++的，所以创建的.hpp与.h是一个东西首先创建一个新类LJX_One.hpp和LJX_One.cpp LJX_One.hpp代码 12345678910111213141516#ifndef LJX_One_hpp#define LJX_One_hpp#include &lt;stdio.h&gt;class LJX &#123; public: LJX()&#123;&#125;; ~LJX()&#123;&#125;; public: int sort(); void compact(); void write();&#125;;#endif /* LJX_One_hpp */ LJX_One.cpp代码 123456789101112131415161718192021222324252627282930#include &lt;iostream&gt;#include "LJX_One.hpp"using namespace std;int LJX::sort()&#123; return 1;&#125;void LJX::compact()&#123; int ljx_count = 1024; int * ljx_isa = &amp;ljx_count; *ljx_isa = *ljx_isa + 1; cout &lt;&lt; ljx_count; cout &lt;&lt;"\n";&#125;void LJX::write()&#123; int *pi = new int( 0 ); int *pia = new int[ 10 ]; while ( *pi &lt; 10 ) &#123; pia[ *pi ] = *pi; cout &lt;&lt; pia[ *pi ] &lt;&lt; "\n"; *pi = *pi + 1; &#125; delete pi; delete [] pia;&#125; main.cpp中调用 12345678910111213141516171819#include &lt;iostream&gt;#include &lt;string&gt;#include "LJX_One.hpp"using namespace std;int main(int argc, const char * argv[]) &#123;LJX first;int count = first.sort();if (count == 0) &#123; first.compact();&#125; else &#123; first.write();&#125;return 0;&#125;]]></content>
+      <tags>
+        <tag>-C++初探</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[hexo新建文章操作]]></title>
+    <url>%2F2016%2F10%2F28%2Fhexo%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C%2F</url>
+    <content type="text"><![CDATA[个人博客不是经常会用，所以总是忘记Hexo的一些命令，最近重新捡起来，把发布新文章的操作从新纪录一下。 cd 到放置文章的_post目录下创建一篇新文章 hexo new post “xxx”执行发布命令 hexo clean 、 hexo d -g 上传完成、刷新页面，嗯嗯是不是发现404了。 CNAME 文件没了，域名指向。 网上都说创建CNMAE文件不要后缀，怎么创建呢？想了N种方法怕出错，直接终端vim就好了，把文件放到Hexo-blog-source目录下，这样下次就不用重新来生成了。 以下为本人脑残纪录，跟上述内容无关 阅读统计：LeanCloud 微博登录的。评论：来必力 手机号还是邮箱的忘掉了。图片：七牛云上配置 应该诗手记。]]></content>
+      <tags>
+        <tag>-hexo记录</tag>
+      </tags>
+  </entry>
+</search>
