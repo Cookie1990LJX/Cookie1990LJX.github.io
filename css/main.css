@@ -1943,7 +1943,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c12de3;
+  background: #8a3eff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3124,7 +3124,7 @@ pre .javascript .function {
 }
 @media screen and (min-width: 100px) {
   body {
-    background-image: url("http://p55cuazcg.bkt.clouddn.com/2821b4a976bc6f10e586a660041eeac7.jpg");
+    background-image: url("http://p55cuazcg.bkt.clouddn.com/c833ddad931850e3e6034f779eaefb7c.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 50% 50%;
@@ -3134,6 +3134,6 @@ pre .javascript .function {
     color: #eee;
   }
   .main-inner {
-    opacity: 1.9;
+    opacity: 0.99;
   }
 }
