@@ -140,7 +140,7 @@
 <meta property="og:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg">
-<meta property="og:updated_time" content="2018-03-28T02:46:20.000Z">
+<meta property="og:updated_time" content="2018-03-28T03:06:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="本地Git仓库">
 <meta name="twitter:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
@@ -447,6 +447,12 @@
 <p>然后按顺序执行下面操作：</p>
 <p>cd到上层的CustomNavgationBar</p>
 <p>$ git add . &amp;&amp; git commit -m “commit my test code”（我也不知道干什么用的）</p>
+<ul>
+<li>git add -A  提交所有变化</li>
+<li>git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)</li>
+<li>git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</li>
+<li>git commit - “提交的内容是啥”</li>
+</ul>
 <p>$ pod spec create CustomNavgationBar</p>
 <p>然后你多了一个CustomNavgationBar.podspec文件，右键打开。具体工具看你电脑里有啥了。</p>
 <p>修改如下位置：</p>
