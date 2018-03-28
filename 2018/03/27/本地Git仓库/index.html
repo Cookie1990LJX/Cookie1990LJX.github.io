@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="-OC进阶," />
+  <meta name="keywords" content="-环境搭建," />
 
 
 
@@ -131,18 +131,20 @@
 
 
 
-<meta name="description" content="本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。">
-<meta name="keywords" content="-OC进阶">
+<meta name="description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
+<meta name="keywords" content="-环境搭建">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FMDB使用优化">
-<meta property="og:url" content="http://lvjunxue.com/2018/03/06/FMDB使用/index.html">
+<meta property="og:title" content="本地Git仓库">
+<meta property="og:url" content="http://lvjunxue.com/2018/03/27/本地Git仓库/index.html">
 <meta property="og:site_name" content="Cookie&#39;s Blog">
-<meta property="og:description" content="本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。">
+<meta property="og:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-10T03:12:45.000Z">
+<meta property="og:image" content="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg">
+<meta property="og:updated_time" content="2018-03-28T02:46:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FMDB使用优化">
-<meta name="twitter:description" content="本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。">
+<meta name="twitter:title" content="本地Git仓库">
+<meta name="twitter:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
+<meta name="twitter:image" content="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg">
 
 
 
@@ -172,13 +174,13 @@
 
 
 
-  <link rel="canonical" href="http://lvjunxue.com/2018/03/06/FMDB使用/"/>
+  <link rel="canonical" href="http://lvjunxue.com/2018/03/27/本地Git仓库/"/>
 
 
 
 
 
-  <title>FMDB使用优化 | Cookie's Blog</title>
+  <title>本地Git仓库 | Cookie's Blog</title>
   
 
 
@@ -349,7 +351,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lvjunxue.com/2018/03/06/FMDB使用/">
+    <link itemprop="mainEntityOfPage" href="http://lvjunxue.com/2018/03/27/本地Git仓库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cookie">
@@ -366,7 +368,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">FMDB使用优化</h1>
+          <h1 class="post-title" itemprop="name headline">本地Git仓库</h1>
         
 
         <div class="post-meta">
@@ -378,8 +380,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-06T19:05:44+08:00">
-                2018-03-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T19:05:44+08:00">
+                2018-03-27
               </time>
             
 
@@ -396,7 +398,7 @@
 
           
           
-             <span id="/2018/03/06/FMDB使用/" class="leancloud_visitors" data-flag-title="FMDB使用优化">
+             <span id="/2018/03/27/本地Git仓库/" class="leancloud_visitors" data-flag-title="本地Git仓库">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -427,12 +429,31 @@
       
 
       
-        <p>本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。</p>
+        <p>本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！</p>
 <a id="more"></a>
-<p>在二次封装FMDB的时候我就蛋疼了一下下，看了下源码FMDatabase和FMDatabaseQueue。这特么是啥？怎么还是两个。通过XX一下，哦哦，soga，一个是可以多线程，一个不可以嘛。</p>
-<p>但是！！！</p>
-<p>嗯，说一下吧，如果你没有看过库表，你要开始使用的时候，你要跳出一个圈，那就是库是库，表是表，他们俩不是一个东西！！！</p>
-<p>等等。。。卧槽，我发现了新大陆，兄弟们顶住，我要重新研究一次，我发现我以前就是在瞎用啊，等我研究的差不多了，在回来写一篇差不多的文章。。。遂此文暂时无果，如果你有什么高深的简介，请加上我的微信或者QQ来联系我！！！因为我好像发现我不会！！！</p>
+<p>开始～～～～～～</p>
+<p>mkdir MyGit 创建一个目录，cd到当前目录—&gt;MyGit，$ git init</p>
+<p>Cookies-MacBook-Pro:MyGit Cookie$ git init<br>Initialized empty Git repository in /Users/Cookie/MyGit/.git/</p>
+<p>？？？怎么什么都没有？？？</p>
+<p>创建了一个隐藏的文件夹.git，我想看看文件夹里都有什么，嗯嗯，简单。输入下面的指令</p>
+<p>$ defaults write com.apple.finder AppleShowAllFiles -bool true  //显示隐藏文件（false）<br>$ KillAll Finder</p>
+<p>配置个人信息：<br>1、一次性的配置， 只会配置到被管理文件的.git文件夹</p>
+<p>$ git config user.name Cookie<br>$ git config user.email <a href="mailto:373733319@qq.com" target="_blank" rel="noopener">373733319@qq.com</a></p>
+<p>2、XX性的配置， 只会配置到被管理文件的.git文件夹</p>
+<p>$ git config –global user.name Cookie<br>$ git config –global user.email <a href="mailto:373733319@qq.com" target="_blank" rel="noopener">373733319@qq.com</a></p>
+<p>$ git config –list查看配置信息</p>
+<p>go on</p>
+<p>创建一个文件夹，名字叫CustomNavgationBar，然后把你想制作成pod库的文件夹复制进去。<br>如图：<br><img src="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg" alt="image"></p>
+<p>然后按顺序执行下面操作：</p>
+<p>cd到上层的CustomNavgationBar</p>
+<p>$ git add . &amp;&amp; git commit -m “commit my test code”（我也不知道干什么用的）</p>
+<p>$ pod spec create CustomNavgationBar</p>
+<p>然后你多了一个CustomNavgationBar.podspec文件，右键打开。具体工具看你电脑里有啥了。</p>
+<p>修改如下位置：</p>
+<p>s.source       = { :git =&gt; “/Users/Cookie/MyGit/CustomNavgationBar”, :tag =&gt; “#{s.version}” }<br>s.description  = &lt;&lt;-DESC<br>                                TODO: Add long description of the pod here.<br>                                DESC<br>s.license      = “MIT”<br>s.source_files  = “CustomNavgationBar”, “CustomNavgationBar/*<em>/</em>.{h,m}”<br>s.exclude_files = “CustomNavgationBar/Exclude”</p>
+<p>然后回到pods文件添加本地库：<br>pod ‘CustomNavgationBar’, :path =&gt; ‘/Users/XXX/MyGit/CustomNavgationBar’</p>
+<p>添加完成之后最后的步骤——————pod install，啊嘿！</p>
+<p>我是用的XCode，然后在Pods下面有个叫Development Pods的文件夹，下面就是你刚刚Pods的文件喔！！！</p>
 
       
     </div>
@@ -479,7 +500,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/OC进阶/" rel="tag"><i class="fa fa-tag"></i> -OC进阶</a>
+            <a href="/tags/环境搭建/" rel="tag"><i class="fa fa-tag"></i> -环境搭建</a>
           
         </div>
       
@@ -492,8 +513,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/06/真机测试如何拿到本地资源/" rel="next" title="真机测试如何拿到本地资源">
-                <i class="fa fa-chevron-left"></i> 真机测试如何拿到本地资源
+              <a href="/2018/03/06/FMDB使用/" rel="next" title="FMDB使用优化">
+                <i class="fa fa-chevron-left"></i> FMDB使用优化
               </a>
             
           </div>
@@ -501,10 +522,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/27/本地Git仓库/" rel="prev" title="本地Git仓库">
-                本地Git仓库 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>

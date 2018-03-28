@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[本地Git仓库]]></title>
+    <url>%2F2018%2F03%2F27%2F%E6%9C%AC%E5%9C%B0Git%E4%BB%93%E5%BA%93%2F</url>
+    <content type="text"><![CDATA[本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！ 开始～～～～～～ mkdir MyGit 创建一个目录，cd到当前目录—&gt;MyGit，$ git init Cookies-MacBook-Pro:MyGit Cookie$ git initInitialized empty Git repository in /Users/Cookie/MyGit/.git/ ？？？怎么什么都没有？？？ 创建了一个隐藏的文件夹.git，我想看看文件夹里都有什么，嗯嗯，简单。输入下面的指令 $ defaults write com.apple.finder AppleShowAllFiles -bool true //显示隐藏文件（false）$ KillAll Finder 配置个人信息：1、一次性的配置， 只会配置到被管理文件的.git文件夹 $ git config user.name Cookie$ git config user.email 373733319@qq.com 2、XX性的配置， 只会配置到被管理文件的.git文件夹 $ git config –global user.name Cookie$ git config –global user.email 373733319@qq.com $ git config –list查看配置信息 go on 创建一个文件夹，名字叫CustomNavgationBar，然后把你想制作成pod库的文件夹复制进去。如图： 然后按顺序执行下面操作： cd到上层的CustomNavgationBar $ git add . &amp;&amp; git commit -m “commit my test code”（我也不知道干什么用的） $ pod spec create CustomNavgationBar 然后你多了一个CustomNavgationBar.podspec文件，右键打开。具体工具看你电脑里有啥了。 修改如下位置： s.source = { :git =&gt; “/Users/Cookie/MyGit/CustomNavgationBar”, :tag =&gt; “#{s.version}” }s.description = &lt;&lt;-DESC TODO: Add long description of the pod here. DESCs.license = “MIT”s.source_files = “CustomNavgationBar”, “CustomNavgationBar/*/.{h,m}”s.exclude_files = “CustomNavgationBar/Exclude” 然后回到pods文件添加本地库：pod ‘CustomNavgationBar’, :path =&gt; ‘/Users/XXX/MyGit/CustomNavgationBar’ 添加完成之后最后的步骤——————pod install，啊嘿！ 我是用的XCode，然后在Pods下面有个叫Development Pods的文件夹，下面就是你刚刚Pods的文件喔！！！]]></content>
+      <tags>
+        <tag>-环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[FMDB使用优化]]></title>
     <url>%2F2018%2F03%2F06%2FFMDB%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。 在二次封装FMDB的时候我就蛋疼了一下下，看了下源码FMDatabase和FMDatabaseQueue。这特么是啥？怎么还是两个。通过XX一下，哦哦，soga，一个是可以多线程，一个不可以嘛。 但是！！！ 嗯，说一下吧，如果你没有看过库表，你要开始使用的时候，你要跳出一个圈，那就是库是库，表是表，他们俩不是一个东西！！！ 等等。。。卧槽，我发现了新大陆，兄弟们顶住，我要重新研究一次，我发现我以前就是在瞎用啊，等我研究的差不多了，在回来写一篇差不多的文章。。。遂此文暂时无果，如果你有什么高深的简介，请加上我的微信或者QQ来联系我！！！因为我好像发现我不会！！！]]></content>
