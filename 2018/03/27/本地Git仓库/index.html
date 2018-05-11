@@ -140,7 +140,7 @@
 <meta property="og:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg">
-<meta property="og:updated_time" content="2018-04-04T02:16:57.640Z">
+<meta property="og:updated_time" content="2018-04-12T11:05:32.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="本地Git仓库">
 <meta name="twitter:description" content="本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！">
@@ -465,6 +465,17 @@
 <p>cd 到XXX的Example目录下，pod install</p>
 <p>在其他的Podfile文件下pod ‘XXX’, :path =&gt; ‘/Users/Cookie/Desktop/NewProject/XXX’</p>
 <p>pod install</p>
+<hr>
+<p>远程仓库</p>
+<p>pod trunk register注册！！！！</p>
+<p>github上创建项目，然后本地新建文件夹，在文件夹中新建一个Classes文件夹，需要上传的文件放到此文件夹中。<br>cd到Classes上一级目录，git init    git add .   git commit -m “第一版上传”</p>
+<p>git remote add origin XXX</p>
+<p>git push -u origin master</p>
+<p>pod spec create XXX</p>
+<p>修改地址</p>
+<p>git tag ‘xxx’</p>
+<p>git push –tags</p>
+<p>pod trunk push XXXX</p>
 
       
     </div>
@@ -533,6 +544,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/10/远程Git仓库/" rel="prev" title="远程Git仓库">
+                远程Git仓库 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -609,7 +624,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
