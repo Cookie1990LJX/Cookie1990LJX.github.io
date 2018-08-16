@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvjunxue.com/"/>
-  <updated>2018-05-10T13:10:25.091Z</updated>
+  <updated>2018-08-16T06:23:38.533Z</updated>
   <id>http://lvjunxue.com/</id>
   
   <author>
@@ -17,13 +17,133 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>远程Git仓库</title>
-    <link href="http://lvjunxue.com/2018/05/10/%E8%BF%9C%E7%A8%8BGit%E4%BB%93%E5%BA%93/"/>
-    <id>http://lvjunxue.com/2018/05/10/远程Git仓库/</id>
-    <published>2018-05-10T11:05:44.000Z</published>
-    <updated>2018-05-10T13:10:25.091Z</updated>
+    <title>离屏渲染问题</title>
+    <link href="http://lvjunxue.com/2017/04/02/GPU%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93/"/>
+    <id>http://lvjunxue.com/2017/04/02/GPU离屏渲染/</id>
+    <published>2017-04-02T11:04:18.000Z</published>
+    <updated>2018-08-16T06:23:38.533Z</updated>
     
-    <content type="html"><![CDATA[<p>脑子不好用了，总是忘记点啥，还是备注下吧</p><a id="more"></a><p>开始～～～～～～</p><p>远程私有仓库（分支仓库）</p><p>pod repo    看看有没有自己的！</p><p>pod repo add 私有库名字 你的私有库地址</p><p>pod lib create XXX                  然后一顿选择。</p><p>cd到目录下</p><p>添加git远程私有库关联    git remote查看，应该是没有的，如果你不相信就自己看下咯。</p><p>git remote add origin XXX</p><p>修改podspec文件<br>s.summary 、s.homepage、s.source、s.source_files等等，自行百度。<br>分支内容来了！！！！<br>s.source_files注释掉<br>s.subspec ‘XXX’ do |X|<br>    X.source_files = ‘路径’<br>    X.dependency = ‘其他库’<br>end</p><p>提交去远程仓库<br>$ git add .</p><ul><li>git add -A  提交所有变化</li><li>git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)</li><li>git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</li></ul><p>$ git status    看看是不是都变绿了</p><p>$ git commit -m “首次提交内容，等待上传其他基础组件”</p><p>上传代码<br>$ git push origin master</p><p>打标签，并且把标签提交到远程私地址$ git tag<br>$ git tag -a ‘0.1.0’ -m “标签显示内容”<br>上传标签    $ git push –tags</p><p>验证spec并提交到本地私有索引库<br>验证本地 $ pod lib lint<br>验证远程 $ pod spec lint<br>都通过后提交本地<br>$ pod repo push XXX XXX.podspec</p><p>使用的时候   soure’adress’</p><p>pod ‘spec’<br>pod ‘spec/xxx’<br>pod ‘spec’, :subspecs =&gt; [‘xxx’, ‘xxx’]</p>]]></content>
+    <content type="html"><![CDATA[<p>这个是我没事的时候在Stackoverflow瞎溜达时候看的</p><a id="more"></a><p>什么是离屏渲染？</p><p>GPU了解下？</p><p>OpenGL的中，GPU屏幕渲染有两种方式。<br>屏幕渲染（当前屏幕渲染）指的是GPU的渲染操作是在当前用于显示的屏幕缓冲区进行。<br>离屏渲染（离屏渲染）指的是在GPU在当前屏幕缓冲区以外开辟一个缓冲区进行渲染操作。<br>当发生离屏的时候，可能导致FPS下降，说白了，卡顿。人眼的辨识是30+</p><p>什么时候会发生离屏渲染</p><p>光栅化、遮罩、阴影、抗锯齿、不透明、复杂形状设置圆角等等，所以新建的空间如果能透明就透明。</p><p>怎么检测呢？<br>Instruments的Core Animation工具中有几个和离屏渲染相关的检查选项：<br>Color Offscreen-Rendered Yellow<br>开启后会把那些需要离屏渲染的图层高亮成黄色，这就意味着黄色图层可能存在性能问题。<br>Color Hits Green and Misses Red</p><p>更新下，改版了新的Xcode<br>（Debug）-（View Debugging）-（Rendering）-（Color Offscreen-Rendered Yellow）</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个是我没事的时候在Stackoverflow瞎溜达时候看的&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>组件化</title>
+    <link href="http://lvjunxue.com/2017/03/09/Crash%E6%94%B6%E9%9B%86/"/>
+    <id>http://lvjunxue.com/2017/03/09/Crash收集/</id>
+    <published>2017-03-09T04:00:12.000Z</published>
+    <updated>2018-08-16T06:02:44.229Z</updated>
+    
+    <content type="html"><![CDATA[<p>新需求～捕获Crash，虽然我每次提交代码之后都会说没BUG，测试吧。。。处女座，不能说没有，很少吧。</p><a id="more"></a><p>iTunes Connect的App分析中有，但是需要用户来设置，所以呢，没啥大用！！！</p><p>很多第三方也可以做，比如友盟移动统计，Mob移动统计，百度移动统计等等。</p><p>如果你想自己实现呢？</p><p>我给你俩工具，具体如何来做。。。那就看你学不学习了</p><p>DSYMTools分析工具,和邮件发送SKPSMTPMessage。</p><p>兄die，加油了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;新需求～捕获Crash，虽然我每次提交代码之后都会说没BUG，测试吧。。。处女座，不能说没有，很少吧。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo图片放置七牛云</title>
+    <link href="http://lvjunxue.com/2017/03/06/hexo%E5%9B%BE%E7%89%87%E6%94%BE%E7%BD%AE%E4%B8%83%E7%89%9B%E4%BA%91/"/>
+    <id>http://lvjunxue.com/2017/03/06/hexo图片放置七牛云/</id>
+    <published>2017-03-06T03:44:25.000Z</published>
+    <updated>2018-08-16T05:09:18.410Z</updated>
+    
+    <content type="html"><![CDATA[<p>其实这是一个测试我配置完的博文，七牛放置图片很简单，百度一下就很多了。</p><a id="more"></a><p><img src="http://p55cuazcg.bkt.clouddn.com/6.jpg" alt="image"></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;其实这是一个测试我配置完的博文，七牛放置图片很简单，百度一下就很多了。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-hexo记录" scheme="http://lvjunxue.com/tags/hexo%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>组件化</title>
+    <link href="http://lvjunxue.com/2017/03/03/iOS%E7%BB%84%E4%BB%B6%E5%8C%96/"/>
+    <id>http://lvjunxue.com/2017/03/03/iOS组件化/</id>
+    <published>2017-03-03T09:00:12.000Z</published>
+    <updated>2018-08-16T05:56:15.826Z</updated>
+    
+    <content type="html"><![CDATA[<p>封装、封装再封装。如果你是单人开发，这么高耦合的代码会加速你的开发。但是，有时候业务逻辑有所改变，你会把项目改的很乱</p><a id="more"></a><p>Url-Block、Protocol-Class(Url-Controller)、Target-Action</p><p>思路都是走一个路由（中间件）来完成页面之间的传递信息。</p><p>网上的已经满天的文章了，具体内容我就不多说了。</p><p>我说一下一个项目是否该用组件化，怎么选择。</p><p>如果你是单人开发，公司的项目设计的业务不是特别多，你可以不考虑组件化，毕竟单人开发的时候有很多地方个人感觉完全没必要，只要不写很多高度耦合的代码出来一个MVVM可以应对项目。</p><p>如果不是单人开发，项目中设计的业务也比较广泛，还有公司可以会有多个业务，很多内容的功能都是类似的，可以考虑用组建来做。毕竟很多基础组建写好之后，可以在很多项目中重用。</p><p>至于选择，其实每个都有自己的优劣，不要被选择困惑。我个人比较喜欢Target-Action多一点。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;封装、封装再封装。如果你是单人开发，这么高耦合的代码会加速你的开发。但是，有时候业务逻辑有所改变，你会把项目改的很乱&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无痕埋点</title>
+    <link href="http://lvjunxue.com/2017/02/03/iOS%E6%97%A0%E7%97%95%E5%9F%8B%E7%82%B9/"/>
+    <id>http://lvjunxue.com/2017/02/03/iOS无痕埋点/</id>
+    <published>2017-02-03T08:08:49.000Z</published>
+    <updated>2018-08-16T05:37:19.720Z</updated>
+    
+    <content type="html"><![CDATA[<p>以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西</p><a id="more"></a><p>Google了很多文章，发现都是面向切面的AOP思想来做的，总结起来就是偷梁换柱的Runtime黑魔法。</p><p>先来一大推的分类。来来来，统一替换埋点的方法。部分点击的分类要考虑深一点，比如UIButton使用UIControl会比较好，UIControl还包含了其他的一些控件。</p><p>那我怎么知道是哪个页面？</p><p>来个plist文件对应表～</p><ul><li><p>(NSString <em>)pageEventID:(BOOL)enterPage<br>{<br>  NSDictionary </em>configDict = [self dictionaryFromUserStatisticsConfigPlist];<br>  NSString *selfClassName = NSStringFromClass([self class]);<br>  return configDict[selfClassName][@”PageEventIDs”][enterPage ? @”Enter” : @”Leave”];<br>}</p></li><li><p>(NSDictionary <em>)dictionaryFromUserStatisticsConfigPlist<br>{<br>  NSString </em>filePath = [[NSBundle mainBundle] pathForResource:@”Config” ofType:@”plist”];<br>  NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];<br>  return dic;<br>}</p></li></ul><p>可能是记录blog，所以写的比较粗糙。</p><p>还有埋点的时候要善于使用XCTAssert。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>视频直播</title>
+    <link href="http://lvjunxue.com/2017/01/03/iOS%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD/"/>
+    <id>http://lvjunxue.com/2017/01/03/iOS视频直播/</id>
+    <published>2017-01-03T11:05:44.000Z</published>
+    <updated>2018-08-16T05:14:18.063Z</updated>
+    
+    <content type="html"><![CDATA[<p>现在第三方集成视频直播的有很多了，想完成一个其实一顿SDK很无脑的就能搞出一个APP。</p><a id="more"></a><p>鉴于对程序的热爱（必不得已）仔细的研究了整个视频直播的过程，具体实现没有做，很多大咖写的非常好了，写这篇播客的目的就是, 想记录一下当时的思路。</p><p>主播端：<br>1）需要做的音视频采集<br>2）视频处理、美颜滤镜之类的（毕竟主播要美美哒）<br>3）视频编码。<br>4）推流到服务器（RTMP,HLS,FLV）</p><p>用户端：<br>1）拉流。<br>2）解码。<br>3）观看。</p><p>用什么来做？em。。。<br>B站的ijkPlayer听过没。如果没有，那ffmpeg了解下。</p><p>在说一下其他的东西，如果真的想在图像视频方面深挖，学学OpenGL（ES）其实不错的。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;现在第三方集成视频直播的有很多了，想完成一个其实一顿SDK很无脑的就能搞出一个APP。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>远程Git仓库</title>
+    <link href="http://lvjunxue.com/2016/08/10/%E8%BF%9C%E7%A8%8BGit%E4%BB%93%E5%BA%93/"/>
+    <id>http://lvjunxue.com/2016/08/10/远程Git仓库/</id>
+    <published>2016-08-10T11:05:44.000Z</published>
+    <updated>2018-08-16T05:12:00.958Z</updated>
+    
+    <content type="html"><![CDATA[<p>脑子不好用了，总是忘记点啥，还是备注下吧</p><a id="more"></a><p>开始～～～～～～</p><p>远程私有仓库（分支仓库）</p><p>pod repo    看看有没有自己的！</p><p>pod repo add 私有库名字 你的私有库地址</p><p>pod lib create XXX                  然后一顿选择。</p><p>cd到目录下</p><p>添加git远程私有库关联    git remote查看，应该是没有的，如果你不相信就自己看下咯。</p><p>git remote add origin XXX</p><p>修改podspec文件<br>s.summary 、s.homepage、s.source、s.source_files等等，自行百度。<br>分支内容来了！！！！<br>s.source_files注释掉<br>s.subspec ‘XXX’ do |X|<br>    X.source_files = ‘路径’<br>    X.dependency = ‘其他库’<br>end</p><p>提交去远程仓库<br>$ git add .</p><ul><li>git add -A  提交所有变化</li><li>git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)</li><li>git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</li></ul><p>$ git status    看看是不是都变绿了</p><p>$ git commit -m “首次提交内容，等待上传其他基础组件”</p><p>上传代码<br>$ git push origin master</p><p>打标签，并且把标签提交到远程私地址$ git tag<br>$ git tag -a ‘0.1.0’ -m “标签显示内容”<br>上传标签    $ git push –tags</p><p>验证spec并提交到本地私有索引库<br>验证本地 $ pod lib lint<br>验证远程 $ pod spec lint<br>都通过后提交本地<br>$ pod repo push XXX XXX.podspec</p><p>使用的时候   soure’adress’</p><p>pod ‘spec’<br>pod ‘spec/xxx’<br>pod ‘spec’, :subspecs =&gt; [‘xxx’, ‘xxx’]</p><p>验证spec的时候如果你引用了私有的库    在验证后面加上–sources=地址,master     更多内容查看help</p>]]></content>
     
     <summary type="html">
     
@@ -38,10 +158,10 @@
   
   <entry>
     <title>本地Git仓库</title>
-    <link href="http://lvjunxue.com/2018/03/27/%E6%9C%AC%E5%9C%B0Git%E4%BB%93%E5%BA%93/"/>
-    <id>http://lvjunxue.com/2018/03/27/本地Git仓库/</id>
-    <published>2018-03-27T11:05:44.000Z</published>
-    <updated>2018-04-12T11:05:32.603Z</updated>
+    <link href="http://lvjunxue.com/2016/08/09/%E6%9C%AC%E5%9C%B0Git%E4%BB%93%E5%BA%93/"/>
+    <id>http://lvjunxue.com/2016/08/09/本地Git仓库/</id>
+    <published>2016-08-09T11:05:44.000Z</published>
+    <updated>2018-08-16T05:12:09.836Z</updated>
     
     <content type="html"><![CDATA[<p>本地Git仓库搭建，小小渣渣给自己Blog留痕，大咖直接忽视，如果错误请指出。谢啦！</p><a id="more"></a><p>开始～～～～～～</p><p>mkdir MyGit 创建一个目录，cd到当前目录—&gt;MyGit，$ git init</p><p>Cookies-MacBook-Pro:MyGit Cookie$ git init<br>Initialized empty Git repository in /Users/Cookie/MyGit/.git/</p><p>？？？怎么什么都没有？？？</p><p>创建了一个隐藏的文件夹.git，我想看看文件夹里都有什么，嗯嗯，简单。输入下面的指令</p><p>$ defaults write com.apple.finder AppleShowAllFiles -bool true  //显示隐藏文件（false）<br>$ KillAll Finder</p><p>配置个人信息：<br>1、一次性的配置， 只会配置到被管理文件的.git文件夹</p><p>$ git config user.name Cookie<br>$ git config user.email <a href="mailto:373733319@qq.com" target="_blank" rel="noopener">373733319@qq.com</a></p><p>2、XX性的配置， 只会配置到被管理文件的.git文件夹</p><p>$ git config –global user.name Cookie<br>$ git config –global user.email <a href="mailto:373733319@qq.com" target="_blank" rel="noopener">373733319@qq.com</a></p><p>$ git config –list查看配置信息</p><p>go on</p><p>创建一个文件夹，名字叫CustomNavgationBar，然后把你想制作成pod库的文件夹复制进去。<br>如图：<br><img src="http://p55cuazcg.bkt.clouddn.com/WechatIMG292.jpeg" alt="image"></p><p>然后按顺序执行下面操作：</p><p>cd到上层的CustomNavgationBar</p><p>$ git add . &amp;&amp; git commit -m “commit my test code”（我也不知道干什么用的）</p><ul><li>git add -A  提交所有变化</li><li>git add -u  提交被修改(modified)和被删除(deleted)文件，不包括新文件(new)</li><li>git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</li><li>git commit - “提交的内容是啥”</li></ul><p>$ pod spec create CustomNavgationBar</p><p>然后你多了一个CustomNavgationBar.podspec文件，右键打开。具体工具看你电脑里有啥了。</p><p>修改如下位置：</p><p>s.source       = { :git =&gt; “/Users/Cookie/MyGit/CustomNavgationBar”, :tag =&gt; “#{s.version}” }<br>s.description  = &lt;&lt;-DESC<br>                                TODO: Add long description of the pod here.<br>                                DESC<br>s.license      = “MIT”<br>s.source_files  = “CustomNavgationBar”, “CustomNavgationBar/*<em>/</em>.{h,m}”<br>s.exclude_files = “CustomNavgationBar/Exclude”</p><p>然后回到pods文件添加本地库：<br>pod ‘CustomNavgationBar’, :path =&gt; ‘/Users/XXX/MyGit/CustomNavgationBar’</p><p>添加完成之后最后的步骤——————pod install，啊嘿！</p><p>我是用的XCode，然后在Pods下面有个叫Development Pods的文件夹，下面就是你刚刚Pods的文件喔！！！</p><p>就是感觉哪里不对，然后发现了新的东西！！！</p><p>pod lib create XXX                  然后一顿选择。<br>修改XXX的.podspec文件<br>s.source           = { :git =&gt; ‘/Users/Cookie/Desktop/NewProject/LJXMediator’, :tag =&gt; s.version.to_s }<br>s.source_files = ‘XXX/Classes/<strong>/*’<br>s.public_header_files = ‘XXX/Classes/</strong>/*.h’<br>依赖库<br>s.dependency ‘AFNetworking’, ‘~&gt; 2.3’</p><p>cd 到XXX的Example目录下，pod install</p><p>在其他的Podfile文件下pod ‘XXX’, :path =&gt; ‘/Users/Cookie/Desktop/NewProject/XXX’</p><p>pod install</p><hr><p>远程仓库</p><p>pod trunk register注册！！！！</p><p>github上创建项目，然后本地新建文件夹，在文件夹中新建一个Classes文件夹，需要上传的文件放到此文件夹中。<br>cd到Classes上一级目录，git init    git add .   git commit -m “第一版上传”</p><p>git remote add origin XXX</p><p>git push -u origin master</p><p>pod spec create XXX</p><p>修改地址</p><p>git tag ‘xxx’</p><p>git push –tags</p><p>pod trunk push XXXX</p>]]></content>
     
@@ -58,12 +178,12 @@
   
   <entry>
     <title>FMDB使用优化</title>
-    <link href="http://lvjunxue.com/2018/03/06/FMDB%E4%BD%BF%E7%94%A8/"/>
-    <id>http://lvjunxue.com/2018/03/06/FMDB使用/</id>
-    <published>2018-03-06T11:05:44.000Z</published>
-    <updated>2018-03-10T03:12:45.000Z</updated>
+    <link href="http://lvjunxue.com/2016/07/06/FMDB%E4%BD%BF%E7%94%A8/"/>
+    <id>http://lvjunxue.com/2016/07/06/FMDB使用/</id>
+    <published>2016-07-06T11:05:44.000Z</published>
+    <updated>2018-08-16T05:11:16.991Z</updated>
     
-    <content type="html"><![CDATA[<p>本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。</p><a id="more"></a><p>在二次封装FMDB的时候我就蛋疼了一下下，看了下源码FMDatabase和FMDatabaseQueue。这特么是啥？怎么还是两个。通过XX一下，哦哦，soga，一个是可以多线程，一个不可以嘛。</p><p>但是！！！</p><p>嗯，说一下吧，如果你没有看过库表，你要开始使用的时候，你要跳出一个圈，那就是库是库，表是表，他们俩不是一个东西！！！</p><p>等等。。。卧槽，我发现了新大陆，兄弟们顶住，我要重新研究一次，我发现我以前就是在瞎用啊，等我研究的差不多了，在回来写一篇差不多的文章。。。遂此文暂时无果，如果你有什么高深的简介，请加上我的微信或者QQ来联系我！！！因为我好像发现我不会！！！</p>]]></content>
+    <content type="html"><![CDATA[<p>本地数据库存储，CoreData研究几天，发现一个大问题，虽然可视化，但是它竟然没有自增主键，这我就受不了了，大佬说CoreData很难的，遂卒。反正我就是要弄个小小的本地数据库，改道来了sqlite+FMDB。遂写了一篇文章，来记录过程。</p><a id="more"></a><p>在二次封装FMDB的时候我就蛋疼了一下下，看了下源码FMDatabase和FMDatabaseQueue。这特么是啥？怎么还是两个。通过XX一下，哦哦，soga，一个是可以多线程，一个不可以嘛。</p><p>但是！！！</p><p>嗯，说一下吧，如果你没有看过库表，你要开始使用的时候，你要跳出一个圈，那就是库是库，表是表，他们俩不是一个东西！！！</p><p>等等。。。</p>]]></content>
     
     <summary type="html">
     
@@ -78,10 +198,10 @@
   
   <entry>
     <title>真机测试如何拿到本地资源</title>
-    <link href="http://lvjunxue.com/2018/03/06/%E7%9C%9F%E6%9C%BA%E6%B5%8B%E8%AF%95%E5%A6%82%E4%BD%95%E6%8B%BF%E5%88%B0%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90/"/>
-    <id>http://lvjunxue.com/2018/03/06/真机测试如何拿到本地资源/</id>
-    <published>2018-03-06T09:09:32.000Z</published>
-    <updated>2018-03-06T09:22:14.000Z</updated>
+    <link href="http://lvjunxue.com/2016/06/06/%E7%9C%9F%E6%9C%BA%E6%B5%8B%E8%AF%95%E5%A6%82%E4%BD%95%E6%8B%BF%E5%88%B0%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90/"/>
+    <id>http://lvjunxue.com/2016/06/06/真机测试如何拿到本地资源/</id>
+    <published>2016-06-06T09:09:32.000Z</published>
+    <updated>2018-08-16T05:10:00.891Z</updated>
     
     <content type="html"><![CDATA[<p>Xcode运行真机或虚拟机测试的时候，有一些需要看看本地缓存或者其他的资源，如何查看呢？</p><a id="more"></a><p>来来来，步骤如下：</p><p>Window<br>Devices and Simulators<br>上面选择类型我选择真机Devices<br>INSTALLED APPS下面是不是有一大堆APP，嗯选中你的要查看的APP<br>点击下面设置形状的小图标会有3个选择Download Container，保存到好找的地方，我保存到桌面。<br>你会得到一个XXX.xcappd文件，右键-显示包裹内容。<br>你看到一个AppData文件夹。点进去看看～～～</p><p>GG</p><hr><p>备注：有时候我会突然忘记一点东西，给自己备用，也给一些新人指引。</p>]]></content>
     
@@ -97,31 +217,11 @@
   </entry>
   
   <entry>
-    <title>hexo图片放置七牛云</title>
-    <link href="http://lvjunxue.com/2018/03/06/hexo%E5%9B%BE%E7%89%87%E6%94%BE%E7%BD%AE%E4%B8%83%E7%89%9B%E4%BA%91/"/>
-    <id>http://lvjunxue.com/2018/03/06/hexo图片放置七牛云/</id>
-    <published>2018-03-06T03:44:25.000Z</published>
-    <updated>2018-03-06T03:48:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>其实这是一个测试我配置完的博文，七牛放置图片很简单，百度一下就很多了。</p><a id="more"></a><p><img src="http://p55cuazcg.bkt.clouddn.com/6.jpg" alt="image"></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;其实这是一个测试我配置完的博文，七牛放置图片很简单，百度一下就很多了。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="-hexo记录" scheme="http://lvjunxue.com/tags/hexo%E8%AE%B0%E5%BD%95/"/>
-    
-  </entry>
-  
-  <entry>
     <title>SDWebImage缓存图片更新</title>
-    <link href="http://lvjunxue.com/2018/03/05/SDWebImage%E7%BC%93%E5%AD%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%96%B0/"/>
-    <id>http://lvjunxue.com/2018/03/05/SDWebImage缓存图片更新/</id>
-    <published>2018-03-05T10:00:00.000Z</published>
-    <updated>2018-03-06T03:45:48.000Z</updated>
+    <link href="http://lvjunxue.com/2016/05/05/SDWebImage%E7%BC%93%E5%AD%98%E5%9B%BE%E7%89%87%E6%9B%B4%E6%96%B0/"/>
+    <id>http://lvjunxue.com/2016/05/05/SDWebImage缓存图片更新/</id>
+    <published>2016-05-05T12:00:00.000Z</published>
+    <updated>2018-08-16T05:08:42.181Z</updated>
     
     <content type="html"><![CDATA[<p>我的朋友最近问我SDWebImage缓存的问题，就写了一篇小Blog，记录一下。</p><a id="more"></a><p>首先，打开浏览器，Google一下SDWebImage更新缓存图片。</p><p>嗯嗯，你得到了一个回答，内容大致如下：</p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dispatch_async</span>(dispatch_get_global_queue(<span class="number">0</span>, <span class="number">0</span>), ^&#123;</span><br><span class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        [<span class="keyword">self</span>.iconView sd_setImageWithURL:[<span class="built_in">NSURL</span> URLWithString:URL(myModel.icon)] placeholderImage:<span class="literal">nil</span> options:SDWebImageRefreshCached];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>SDWebImageRefreshCached看字面意思就是更新缓存嘛，SD的官方也是说用这个方法的啊，看起来很简单嘛，然而事情没有你想的那么简单，你会发现问题如下:</p><p>1、图片没有更新。<br>2、图片没有了。<br>3、XXXXXX等问题。</p><p>仔细看看源码的注解</p><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (image &amp;&amp; options &amp; SDWebImageRefreshCached) &#123;</span><br><span class="line">    dispatch_main_sync_safe(^&#123;</span><br><span class="line">        <span class="comment">// If image was found in the cache but SDWebImageRefreshCached is provided, notify about the cached image</span></span><br><span class="line">        <span class="comment">// AND try to re-download it in order to let a chance to NSURLCache to refresh it from server.</span></span><br><span class="line">        completedBlock(image, <span class="literal">nil</span>, cacheType, <span class="literal">YES</span>, url);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>说是如果缓存中有图片先用，然后图片有更新让NSURLCache从服务器下载新的，来后来我仔细Google一下，服务器需要支持Cache-Control，SDWebImageRefreshCached这个属性才会生效，打开终端，输入 curl 图片url –head 看看有没有Cache-Control:max-age=xxx；如果不存在说明服务不支持，这个xxx就是图片缓存有效时长，设置的时间短呢，很次请求都要去刷新图片，是不是感觉SD的图片缓存的功能似乎没有用了呢。时间长了改变图片不会刷新，很纠结的问题。</p><p>想来想去解决方案有几种方法<br>        1、用SDWebImageCacheMemoryOnly属性，每次大退之后呢，缓存清除了。重新启动后所有图片要重新加载。或者在启动配置分类里写[[SDImageCache sharedImageCache] clearDisk]这个方法是一样的。<br>        2、服务器更换图片加后缀，比如最开始的图片叫1.png，更新图片后改名为1_1.png这样图片的Url改变了，就会重新请求。<br>        3、也是目前比较高逼格的。还是使用SDWebImageRefreshCached属性，需要服务端支持一下下。curl之后拿到如下的结果，发现有ETag和Last-Modified。<br>                HTTP/1.1 200 OK<br>                Server: nginx<br>                Date: Mon, 05 Mar 2018 10:14:57 GMT<br>                Content-Type: image/png;charset=UTF-8<br>                Content-Length: 4469<br>                Connection: keep-alive<br>                Access-Control-Allow-Origin: *<br>                Accept-Ranges: bytes<br>                ETag: W/“4469-1517398918000”<br>                Last-Modified: Wed, 31 Jan 2018 11:41:58 GMT</p><p>网上漫天的贴了一段相同的代码</p><pre><code><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">SDWebImageDownloader *imgDownloader = SDWebImageManager.sharedManager.imageDownloader;</span><br><span class="line"></span><br><span class="line">imgDownloader.headersFilter  = ^<span class="built_in">NSDictionary</span> *(<span class="built_in">NSURL</span> *url, <span class="built_in">NSDictionary</span> *headers) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSFileManager</span> *fm = [[<span class="built_in">NSFileManager</span> alloc] init];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSString</span> *imgKey = [SDWebImageManager.sharedManager cacheKeyForURL:url];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSString</span> *imgPath = [SDWebImageManager.sharedManager.imageCache defaultCachePathForKey:imgKey];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSDictionary</span> *fileAttr = [fm attributesOfItemAtPath:imgPath error:<span class="literal">nil</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSMutableDictionary</span> *mutableHeaders = [headers mutableCopy];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSDate</span> *lastModifiedDate = <span class="literal">nil</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (fileAttr.count &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (fileAttr.count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            lastModifiedDate = (<span class="built_in">NSDate</span> *)fileAttr[<span class="built_in">NSFileModificationDate</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSDateFormatter</span> *formatter = [[<span class="built_in">NSDateFormatter</span> alloc] init];</span><br><span class="line"></span><br><span class="line">    formatter.timeZone = [<span class="built_in">NSTimeZone</span> timeZoneWithAbbreviation:<span class="string">@"GMT"</span>];</span><br><span class="line"></span><br><span class="line">    formatter.locale = [[<span class="built_in">NSLocale</span> alloc] initWithLocaleIdentifier:<span class="string">@"en_US"</span>];</span><br><span class="line"></span><br><span class="line">    formatter.dateFormat = <span class="string">@"EEE, dd MMM yyyy HH:mm:ss z"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">NSString</span> *lastModifiedStr = [formatter stringFromDate:lastModifiedDate];</span><br><span class="line"></span><br><span class="line">    lastModifiedStr = lastModifiedStr.length &gt; <span class="number">0</span> ? lastModifiedStr : <span class="string">@""</span>;</span><br><span class="line"></span><br><span class="line">    [mutableHeaders setValue:lastModifiedStr forKey:<span class="string">@"If-Modified-Since"</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> mutableHeaders;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></code></pre><p>嗯，加在启动的配置项里。然后你发现你的图片记载并不好使。<br>他们说是需要服务端支持，如果图片有更新返回code200，返回新的ETag和Last-Modified，如果没有更新呢，返回304。<br>SD上面有一段对304的判断：</p><pre><code><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//'304 Not Modified' is an exceptional one</span></span><br><span class="line"><span class="keyword">if</span> (![response respondsToSelector:<span class="keyword">@selector</span>(statusCode)] || ([((<span class="built_in">NSHTTPURLResponse</span> *)response) statusCode] &lt; <span class="number">400</span> &amp;&amp; [((<span class="built_in">NSHTTPURLResponse</span> *)response) statusCode] != <span class="number">304</span>)) &#123;</span><br><span class="line">    <span class="built_in">NSInteger</span> expected = response.expectedContentLength &gt; <span class="number">0</span> ? (<span class="built_in">NSInteger</span>)response.expectedContentLength : <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">self</span>.expectedSize = expected;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>.progressBlock) &#123;</span><br><span class="line">        <span class="keyword">self</span>.progressBlock(<span class="number">0</span>, expected);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">self</span>.imageData = [[<span class="built_in">NSMutableData</span> alloc] initWithCapacity:expected];</span><br><span class="line">    <span class="keyword">self</span>.response = response;</span><br><span class="line">    <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">        [[<span class="built_in">NSNotificationCenter</span> defaultCenter] postNotificationName:SDWebImageDownloadReceiveResponseNotification object:<span class="keyword">self</span>];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre><p>如果是304，就说明没有新的图片。。。<br>我们服务器估计没有304的判断，所以我也没有做验证，毕竟我是个新手，验证还是要靠你们，晚上8点了，就写这么多了，有问题的话大佬们指出下，我再去重新看一遍。</p><hr>]]></content>
     
@@ -137,31 +237,31 @@
   </entry>
   
   <entry>
-    <title>开始写博客</title>
-    <link href="http://lvjunxue.com/2018/03/05/%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://lvjunxue.com/2018/03/05/开始写博客/</id>
-    <published>2018-03-05T09:00:00.000Z</published>
-    <updated>2018-03-05T09:00:47.000Z</updated>
+    <title>hexo新建文章操作</title>
+    <link href="http://lvjunxue.com/2016/04/28/hexo%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/"/>
+    <id>http://lvjunxue.com/2016/04/28/hexo新建文章操作/</id>
+    <published>2016-04-28T02:34:25.000Z</published>
+    <updated>2018-08-16T05:07:54.257Z</updated>
     
-    <content type="html"><![CDATA[<p>我的朋友去面试的时候，有一些面试官问到是否有Github和Blog。</p><a id="more"></a><p>个人感觉，现在的Github上垃圾太多了，一搜索一万来个东西，有2、3个能用的就不错了。所以现在很少上Github上down代码来看，都是在Stackoverflow瞎逛。</p><p>以前很多东西都是放在脑子里的，出现问题会微微的有一点印象，随便Google下，就可以了。最近工作不是那么稳定，有点想去大佬的地方呆呆，学习一点东西的想法。所以重拾个人博客，至于Github，自己搭建过很多的框架，每次都不满意，最近又开始新的旅程。等我在自己的水平上，搭建完自己满意的东西，会把平时用的都搞上去，然后在上传。亲们，我只是一个小渣渣，不好的地方请不要打我，先行谢过！！！</p><hr>]]></content>
+    <content type="html"><![CDATA[<p>个人博客不是经常会用，所以总是忘记Hexo的一些命令，最近重新捡起来，把发布新文章的操作从新纪录一下。</p><a id="more"></a><p>cd 到放置文章的_post目录下<br>创建一篇新文章    hexo new post “xxx”<br>执行发布命令 hexo clean 、 hexo d -g</p><p>上传完成、刷新页面，嗯嗯是不是发现404了。</p><p>CNAME 文件没了，域名指向。</p><p>网上都说创建CNMAE文件不要后缀，怎么创建呢？想了N种方法怕出错，直接终端vim就好了，把文件放到Hexo-blog-source目录下，这样下次就不用重新来生成了。</p><hr><p>以下为本人脑残纪录，跟上述内容无关</p><p>阅读统计：LeanCloud   微博登录的。<br>评论：来必力  手机号还是邮箱的忘掉了。<br>图片：七牛云上配置   应该诗手记。</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;我的朋友去面试的时候，有一些面试官问到是否有Github和Blog。&lt;/p&gt;
+      &lt;p&gt;个人博客不是经常会用，所以总是忘记Hexo的一些命令，最近重新捡起来，把发布新文章的操作从新纪录一下。&lt;/p&gt;
     
     </summary>
     
     
-      <category term="-杂记" scheme="http://lvjunxue.com/tags/%E6%9D%82%E8%AE%B0/"/>
+      <category term="-hexo记录" scheme="http://lvjunxue.com/tags/hexo%E8%AE%B0%E5%BD%95/"/>
     
   </entry>
   
   <entry>
     <title>C++创建新类如何关联到main.cpp上</title>
-    <link href="http://lvjunxue.com/2016/11/15/C-%E5%88%9B%E5%BB%BA%E6%96%B0%E7%B1%BB%E5%A6%82%E4%BD%95%E5%85%B3%E8%81%94%E5%88%B0main-cpp%E4%B8%8A/"/>
-    <id>http://lvjunxue.com/2016/11/15/C-创建新类如何关联到main-cpp上/</id>
-    <published>2016-11-15T07:53:47.000Z</published>
-    <updated>2018-03-06T03:46:19.000Z</updated>
+    <link href="http://lvjunxue.com/2016/04/15/C-%E5%88%9B%E5%BB%BA%E6%96%B0%E7%B1%BB%E5%A6%82%E4%BD%95%E5%85%B3%E8%81%94%E5%88%B0main-cpp%E4%B8%8A/"/>
+    <id>http://lvjunxue.com/2016/04/15/C-创建新类如何关联到main-cpp上/</id>
+    <published>2016-04-15T07:53:47.000Z</published>
+    <updated>2018-08-16T05:08:06.823Z</updated>
     
     <content type="html"><![CDATA[<p>对于无C++基础的人来说，新建一个.h和.cpp如何与main.cpp关联是一脸懵逼的状态。</p><a id="more"></a><p>本人用mac的Xcode来学习C++的，所以创建的.hpp与.h是一个东西<br>首先创建一个新类LJX_One.hpp和LJX_One.cpp</p><p>LJX_One.hpp代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> LJX_One_hpp</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LJX_One_hpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LJX</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        LJX()&#123;&#125;;</span><br><span class="line">        ~LJX()&#123;&#125;;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">sort</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">compact</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">/* LJX_One_hpp */</span></span></span><br></pre></td></tr></table></figure><p>LJX_One.cpp代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"LJX_One.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> LJX::sort()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> LJX::compact()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> ljx_count = <span class="number">1024</span>;</span><br><span class="line">    <span class="keyword">int</span> * ljx_isa = &amp;ljx_count;</span><br><span class="line">    *ljx_isa = *ljx_isa + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; ljx_count;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt;<span class="string">"\n"</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">void</span> LJX::write()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> *pi = <span class="keyword">new</span> <span class="keyword">int</span>( <span class="number">0</span> );</span><br><span class="line">    <span class="keyword">int</span> *pia = <span class="keyword">new</span> <span class="keyword">int</span>[ <span class="number">10</span> ];</span><br><span class="line">    <span class="keyword">while</span> ( *pi &lt; <span class="number">10</span> ) &#123;</span><br><span class="line">        pia[ *pi ] = *pi;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; pia[ *pi ] &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">        *pi = *pi + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">delete</span> pi;</span><br><span class="line">    <span class="keyword">delete</span> [] pia;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>main.cpp中调用</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"LJX_One.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">const</span> <span class="keyword">char</span> * argv[])</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">LJX first;</span><br><span class="line"><span class="keyword">int</span> count = first.sort();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">    first.compact();</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    first.write();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -177,22 +277,22 @@
   </entry>
   
   <entry>
-    <title>hexo新建文章操作</title>
-    <link href="http://lvjunxue.com/2016/10/28/hexo%E6%96%B0%E5%BB%BA%E6%96%87%E7%AB%A0%E6%93%8D%E4%BD%9C/"/>
-    <id>http://lvjunxue.com/2016/10/28/hexo新建文章操作/</id>
-    <published>2016-10-28T02:34:25.000Z</published>
-    <updated>2018-03-06T05:51:59.000Z</updated>
+    <title>开始写博客</title>
+    <link href="http://lvjunxue.com/2016/03/05/%E5%BC%80%E5%A7%8B%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://lvjunxue.com/2016/03/05/开始写博客/</id>
+    <published>2016-03-05T09:00:00.000Z</published>
+    <updated>2018-08-16T05:09:32.591Z</updated>
     
-    <content type="html"><![CDATA[<p>个人博客不是经常会用，所以总是忘记Hexo的一些命令，最近重新捡起来，把发布新文章的操作从新纪录一下。</p><a id="more"></a><p>cd 到放置文章的_post目录下<br>创建一篇新文章    hexo new post “xxx”<br>执行发布命令 hexo clean 、 hexo d -g</p><p>上传完成、刷新页面，嗯嗯是不是发现404了。</p><p>CNAME 文件没了，域名指向。</p><p>网上都说创建CNMAE文件不要后缀，怎么创建呢？想了N种方法怕出错，直接终端vim就好了，把文件放到Hexo-blog-source目录下，这样下次就不用重新来生成了。</p><hr><p>以下为本人脑残纪录，跟上述内容无关</p><p>阅读统计：LeanCloud   微博登录的。<br>评论：来必力  手机号还是邮箱的忘掉了。<br>图片：七牛云上配置   应该诗手记。</p>]]></content>
+    <content type="html"><![CDATA[<p>Blog。</p><a id="more"></a><p>个人感觉，现在的Github上em。。。所以现在很少上Github上down代码来看，都是在Stackoverflow瞎逛。</p><p>以前很多东西都是放在脑子里的，出现问题会微微的有一点印象，随便Google下，就可以了。最近工作不是那么稳定，有点想去大佬的地方呆呆，学习一点东西的想法。所以重拾个人博客，至于Github，自己搭建过很多的框架，每次都不满意，最近又开始新的旅程。等我在自己的水平上，搭建完自己满意的东西，会把平时用的都搞上去，然后在上传。亲们，我只是一个小渣渣，不好的地方请不要打我，先行谢过！！！</p><hr>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;个人博客不是经常会用，所以总是忘记Hexo的一些命令，最近重新捡起来，把发布新文章的操作从新纪录一下。&lt;/p&gt;
+      &lt;p&gt;Blog。&lt;/p&gt;
     
     </summary>
     
     
-      <category term="-hexo记录" scheme="http://lvjunxue.com/tags/hexo%E8%AE%B0%E5%BD%95/"/>
+      <category term="-杂记" scheme="http://lvjunxue.com/tags/%E6%9D%82%E8%AE%B0/"/>
     
   </entry>
   
