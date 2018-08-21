@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvjunxue.com/"/>
-  <updated>2018-08-16T06:23:38.533Z</updated>
+  <updated>2018-08-21T03:41:13.657Z</updated>
   <id>http://lvjunxue.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Cocoa Touch</title>
+    <link href="http://lvjunxue.com/2017/08/20/GPU%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E7%9A%84%E5%89%AF%E6%9C%AC/"/>
+    <id>http://lvjunxue.com/2017/08/20/GPU离屏渲染的副本/</id>
+    <published>2017-08-20T13:34:27.000Z</published>
+    <updated>2018-08-21T03:41:13.657Z</updated>
+    
+    <content type="html"><![CDATA[<p>Cocoa Touch就是指Foundation框架和UIKit框架。</p><a id="more"></a><p>系统最上层的，编写代码的时候，先看看这层提供的技术是否能满足你的需求，如果能，就用。不行在往下层去搞。</p><p>Cocoa Touch都有啥</p><p>Message UI<br>提供了App集成邮件与短信的支持。支持包括在App界面中弹出一个视图控制器界面。可以在该视图控制器中填入接收者，主题，主要内容和任意你想包含在信息里的附件。在弹出该视图控制器后，用户可以选择在发送之前对其做出编辑。</p><p>Address Book UI<br>一个Object-C编程接口，用来显示创建新联系人和编辑已经存在联系人信息的标准系统联系人界面。该框架简化了在App中显示联系人信息的操作，同时保证所有App的联系人界面在同一平台上都相同。</p><p>EventKit UI<br>提供了可以弹出查看和编辑日程相关事件的标准系统界面的视图控制器。该框架建立在EventKit框架的事件相关数据之上。</p><p>GameKit<br>实现了对Game Centre的支持，Game Center让用户可以在线分享游戏相关数据。</p><p>iAd<br>让App实现横幅广告的展示。广告会嵌入到你的交互界面的标准视图中，并在需要的时候弹出。</p><p>MapKit<br>提供可嵌入到App的用户界面中的可拖拽地图。可以使用该框架来自定义地图的内容与外观。</p><p>NotificationCenter<br>提供创建在通知中心里显示信息的小部件的功能。</p><p>PushKit<br>提供VoIP App的注册使用支持。该框架替代了之前注册VoIP App的API。</p><p>UIKit<br>提供了实现绘图和事件驱动App的重要基础。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Cocoa Touch就是指Foundation框架和UIKit框架。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>离屏渲染问题</title>
@@ -37,11 +57,11 @@
   </entry>
   
   <entry>
-    <title>组件化</title>
+    <title>捕获Crash</title>
     <link href="http://lvjunxue.com/2017/03/09/Crash%E6%94%B6%E9%9B%86/"/>
     <id>http://lvjunxue.com/2017/03/09/Crash收集/</id>
     <published>2017-03-09T04:00:12.000Z</published>
-    <updated>2018-08-16T06:02:44.229Z</updated>
+    <updated>2018-08-21T02:57:47.673Z</updated>
     
     <content type="html"><![CDATA[<p>新需求～捕获Crash，虽然我每次提交代码之后都会说没BUG，测试吧。。。处女座，不能说没有，很少吧。</p><a id="more"></a><p>iTunes Connect的App分析中有，但是需要用户来设置，所以呢，没啥大用！！！</p><p>很多第三方也可以做，比如友盟移动统计，Mob移动统计，百度移动统计等等。</p><p>如果你想自己实现呢？</p><p>我给你俩工具，具体如何来做。。。那就看你学不学习了</p><p>DSYMTools分析工具,和邮件发送SKPSMTPMessage。</p><p>兄die，加油了。</p>]]></content>
     

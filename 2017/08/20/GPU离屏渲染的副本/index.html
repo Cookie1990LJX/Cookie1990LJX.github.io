@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-iOS进阶," />
 
 
 
@@ -131,16 +131,18 @@
 
 
 
-<meta name="description" content="嘴角上扬、看尽世态炎凉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cookie&#39;s Blog">
-<meta property="og:url" content="http://lvjunxue.com/archives/2016/03/index.html">
+<meta name="description" content="Cocoa Touch就是指Foundation框架和UIKit框架。">
+<meta name="keywords" content="-iOS进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cocoa Touch">
+<meta property="og:url" content="http://lvjunxue.com/2017/08/20/GPU离屏渲染的副本/index.html">
 <meta property="og:site_name" content="Cookie&#39;s Blog">
-<meta property="og:description" content="嘴角上扬、看尽世态炎凉">
+<meta property="og:description" content="Cocoa Touch就是指Foundation框架和UIKit框架。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-21T03:41:13.657Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cookie&#39;s Blog">
-<meta name="twitter:description" content="嘴角上扬、看尽世态炎凉">
+<meta name="twitter:title" content="Cocoa Touch">
+<meta name="twitter:description" content="Cocoa Touch就是指Foundation框架和UIKit框架。">
 
 
 
@@ -170,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="http://lvjunxue.com/archives/2016/03/"/>
+  <link rel="canonical" href="http://lvjunxue.com/2017/08/20/GPU离屏渲染的副本/"/>
 
 
 
 
 
-  <title>总览 | Cookie's Blog</title>
+  <title>Cocoa Touch | Cookie's Blog</title>
   
 
 
@@ -195,7 +197,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -333,74 +335,199 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Cookie!  15 篇日志。 。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2016">2016</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lvjunxue.com/2017/08/20/GPU离屏渲染的副本/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cookie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/image.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cookie's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2016/03/05/开始写博客/" itemprop="url">
-              
-                <span itemprop="name">开始写博客</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Cocoa Touch</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-05T17:00:00+08:00"
-              content="2016-03-05" >
-          03-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T21:34:27+08:00">
+                2017-08-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/08/20/GPU离屏渲染的副本/" class="leancloud_visitors" data-flag-title="Cocoa Touch">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <p>Cocoa Touch就是指Foundation框架和UIKit框架。</p>
+<a id="more"></a>
+<p>系统最上层的，编写代码的时候，先看看这层提供的技术是否能满足你的需求，如果能，就用。不行在往下层去搞。</p>
+<p>Cocoa Touch都有啥</p>
+<p>Message UI<br>提供了App集成邮件与短信的支持。支持包括在App界面中弹出一个视图控制器界面。可以在该视图控制器中填入接收者，主题，主要内容和任意你想包含在信息里的附件。在弹出该视图控制器后，用户可以选择在发送之前对其做出编辑。</p>
+<p>Address Book UI<br>一个Object-C编程接口，用来显示创建新联系人和编辑已经存在联系人信息的标准系统联系人界面。该框架简化了在App中显示联系人信息的操作，同时保证所有App的联系人界面在同一平台上都相同。</p>
+<p>EventKit UI<br>提供了可以弹出查看和编辑日程相关事件的标准系统界面的视图控制器。该框架建立在EventKit框架的事件相关数据之上。</p>
+<p>GameKit<br>实现了对Game Centre的支持，Game Center让用户可以在线分享游戏相关数据。</p>
+<p>iAd<br>让App实现横幅广告的展示。广告会嵌入到你的交互界面的标准视图中，并在需要的时候弹出。</p>
+<p>MapKit<br>提供可嵌入到App的用户界面中的可拖拽地图。可以使用该框架来自定义地图的内容与外观。</p>
+<p>NotificationCenter<br>提供创建在通知中心里显示信息的小部件的功能。</p>
+<p>PushKit<br>提供VoIP App的注册使用支持。该框架替代了之前注册VoIP App的API。</p>
+<p>UIKit<br>提供了实现绘图和事件驱动App的重要基础。</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cookie 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Cookie 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS进阶/" rel="tag"><i class="fa fa-tag"></i> -iOS进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/02/GPU离屏渲染/" rel="next" title="离屏渲染问题">
+                <i class="fa fa-chevron-left"></i> 离屏渲染问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -408,6 +535,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDU1OC8xMTA5Ng=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -643,6 +779,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -671,6 +811,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
