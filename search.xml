@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title><![CDATA[Cocoa Touch]]></title>
-    <url>%2F2017%2F08%2F20%2FGPU%E7%A6%BB%E5%B1%8F%E6%B8%B2%E6%9F%93%E7%9A%84%E5%89%AF%E6%9C%AC%2F</url>
+    <url>%2F2017%2F08%2F20%2FCocoa%20Touch%2F</url>
     <content type="text"><![CDATA[Cocoa Touch就是指Foundation框架和UIKit框架。 系统最上层的，编写代码的时候，先看看这层提供的技术是否能满足你的需求，如果能，就用。不行在往下层去搞。 Cocoa Touch都有啥 Message UI提供了App集成邮件与短信的支持。支持包括在App界面中弹出一个视图控制器界面。可以在该视图控制器中填入接收者，主题，主要内容和任意你想包含在信息里的附件。在弹出该视图控制器后，用户可以选择在发送之前对其做出编辑。 Address Book UI一个Object-C编程接口，用来显示创建新联系人和编辑已经存在联系人信息的标准系统联系人界面。该框架简化了在App中显示联系人信息的操作，同时保证所有App的联系人界面在同一平台上都相同。 EventKit UI提供了可以弹出查看和编辑日程相关事件的标准系统界面的视图控制器。该框架建立在EventKit框架的事件相关数据之上。 GameKit实现了对Game Centre的支持，Game Center让用户可以在线分享游戏相关数据。 iAd让App实现横幅广告的展示。广告会嵌入到你的交互界面的标准视图中，并在需要的时候弹出。 MapKit提供可嵌入到App的用户界面中的可拖拽地图。可以使用该框架来自定义地图的内容与外观。 NotificationCenter提供创建在通知中心里显示信息的小部件的功能。 PushKit提供VoIP App的注册使用支持。该框架替代了之前注册VoIP App的API。 UIKit提供了实现绘图和事件驱动App的重要基础。]]></content>
       <tags>
         <tag>-iOS进阶</tag>
