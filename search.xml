@@ -49,9 +49,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[WebRTC]]></title>
+    <url>%2F2017%2F01%2F05%2FWebRTC%2F</url>
+    <content type="text"><![CDATA[WebRTC内容，简单集成。 搞个环境吧。。。 http://www.cnblogs.com/fulianga/p/5868823.html下载编译如果你要试试功能，去gitHub上随便找一个版本就行了。 一个头文件的文件夹，加一个.a文件。 导入系统依赖库CoreMedia.frameworkAVFoundation.frameworkAudioToolbox.frameworkGLKit.frameworkOpenGLES.frameworkVideoToolbox.frameworklibicucore.tbdlibstdc++.6.tbdlibc++.tbdlibresolv.tbdlibxml2.tbdOK环境完事了。 WebRTC主要实现了三个API，分别是:MediaStream：通过MediaStream的API能够通过设备的摄像头及话筒获得视频、音频的同步流。RTCPeerConnection：RTCPeerConnection是WebRTC用于构建点对点之间稳定、高效的流传输的组件。RTCDataChannel：RTCDataChannel使得浏览器之间（点对点）建立一个高吞吐量、低延时的信道，用于传输任意数据。其中RTCPeerConnection是我们WebRTC的核心组件。 1234567891011121314151617181920212223242526272829@protocol WebRTCHelperDelegate;@interface WebRTCHelper : NSObject&lt;SRWebSocketDelegate&gt;+ (instancetype)sharedInstance;@property (nonatomic, weak)id&lt;WebRTCHelperDelegate&gt; delegate;/*** 与服务器建立连接** @param server 服务器地址* @param room 房间号*/- (void)connectServer:(NSString *)server port:(NSString *)port room:(NSString *)room;/*** 退出房间*/- (void)exitRoom;@end@protocol WebRTCHelperDelegate &lt;NSObject&gt;@optional- (void)webRTCHelper:(WebRTCHelper *)webRTChelper setLocalStream:(RTCMediaStream *)stream userId:(NSString *)userId;- (void)webRTCHelper:(WebRTCHelper *)webRTChelper addRemoteStream:(RTCMediaStream *)stream userId:(NSString *)userId;- (void)webRTCHelper:(WebRTCHelper *)webRTChelper closeWithUserId:(NSString *)userId;@end 把所有的头文件都看一圈。。。em。。。反正没人看，我就是自己记录一下而已。 具体实现过程的文章。 iOS下音视频通信-基于WebRTC还有一些即时通讯的文章，统一在这记录一下。。。iOS即时通讯，从入门到“放弃”？iOS即时通讯进阶 - CocoaAsyncSocket源码解析(Connect篇)iOS即时通讯进阶 - CocoaAsyncSocket源码解析(Connect篇终)iOS即时通讯进阶 - CocoaAsyncSocket源码解析(Read篇)iOS即时通讯进阶 - CocoaAsyncSocket源码解析(Read篇终) 上面的作者很用心，写了很多，多读读，其实简单实现还是很容易的。但是！！！你要知道你的Demo只面对了你自己，当你面对9亿网民的时候，有可能分分钟就被干趴了，还是要好好研究才能上项目的。]]></content>
+      <tags>
+        <tag>-iOS进阶</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[视频直播]]></title>
     <url>%2F2017%2F01%2F03%2FiOS%E8%A7%86%E9%A2%91%E7%9B%B4%E6%92%AD%2F</url>
-    <content type="text"><![CDATA[现在第三方集成视频直播的有很多了，想完成一个其实一顿SDK很无脑的就能搞出一个APP。 鉴于对程序的热爱（必不得已）仔细的研究了整个视频直播的过程，具体实现没有做，很多大咖写的非常好了，写这篇播客的目的就是, 想记录一下当时的思路。 主播端：1）需要做的音视频采集2）视频处理、美颜滤镜之类的（毕竟主播要美美哒）3）视频编码。4）推流到服务器（RTMP,HLS,FLV） 用户端：1）拉流。2）解码。3）观看。 用什么来做？em。。。B站的ijkPlayer听过没。如果没有，那ffmpeg了解下。 在说一下其他的东西，如果真的想在图像视频方面深挖，学学OpenGL（ES）其实不错的。]]></content>
+    <content type="text"><![CDATA[现在第三方集成视频直播的有很多了，想完成一个其实一顿SDK很无脑的就能搞出一个APP。 鉴于对程序的热爱（必不得已）仔细的研究了整个视频直播的过程，具体实现没有做，很多大咖写的非常好了，写这篇播客的目的就是, 想记录一下当时的思路。 主播端：1）需要做的音视频采集2）视频处理、美颜滤镜之类的（毕竟主播要美美哒）3）视频编码。4）推流到服务器（RTMP,HLS,FLV） 用户端：1）拉流。2）解码。3）观看。 用什么来做？em。。。B站的ijkPlayer听过没。如果没有，那ffmpeg了解下。 在说一下其他的东西，如果真的想在图像视频方面深挖，学学OpenGL（ES）其实不错的。 WebRTC内容，之后在写吧。。。。]]></content>
       <tags>
         <tag>-iOS进阶</tag>
       </tags>
