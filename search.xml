@@ -19,7 +19,7 @@
   <entry>
     <title><![CDATA[捕获Crash]]></title>
     <url>%2F2017%2F03%2F09%2FCrash%E6%94%B6%E9%9B%86%2F</url>
-    <content type="text"><![CDATA[新需求～捕获Crash，虽然我每次提交代码之后都会说没BUG，测试吧。。。处女座，不能说没有，很少吧。 iTunes Connect的App分析中有，但是需要用户来设置，所以呢，没啥大用！！！ 很多第三方也可以做，比如友盟移动统计，Mob移动统计，百度移动统计等等。 如果你想自己实现呢？ 我给你俩工具，具体如何来做。。。那就看你学不学习了 DSYMTools分析工具,和邮件发送SKPSMTPMessage。 兄die，加油了。]]></content>
+    <content type="text"><![CDATA[新需求～捕获Crash，虽然我每次提交代码之后都会说没BUG，测试吧。。。处女座，不能说没有，很少吧。 iTunes Connect的App分析中有，但是需要用户来设置，所以呢，没啥大用！！！ 很多第三方也可以做，比如友盟移动统计，Mob移动统计，百度移动统计等等。 如果你想自己实现呢？ 我给你俩工具，具体如何来做。。。那就看你学不学习了 DSYMTools分析工具,和邮件发送SKPSMTPMessage。 兄die，加油了。 Plcrashreporter听说这个很多大公司在用。了解下。。。]]></content>
       <tags>
         <tag>-iOS进阶</tag>
       </tags>
