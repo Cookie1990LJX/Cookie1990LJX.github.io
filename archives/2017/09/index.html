@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="-iOS进阶," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -131,18 +131,16 @@
 
 
 
-<meta name="description" content="以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西">
-<meta name="keywords" content="-iOS进阶">
-<meta property="og:type" content="article">
-<meta property="og:title" content="无痕埋点">
-<meta property="og:url" content="http://lvjunxue.com/2017/02/03/iOS无痕埋点/index.html">
+<meta name="description" content="嘴角上扬、看尽世态炎凉">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Cookie&#39;s Blog">
+<meta property="og:url" content="http://lvjunxue.com/archives/2017/09/index.html">
 <meta property="og:site_name" content="Cookie&#39;s Blog">
-<meta property="og:description" content="以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西">
+<meta property="og:description" content="嘴角上扬、看尽世态炎凉">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T05:37:19.720Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无痕埋点">
-<meta name="twitter:description" content="以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西">
+<meta name="twitter:title" content="Cookie&#39;s Blog">
+<meta name="twitter:description" content="嘴角上扬、看尽世态炎凉">
 
 
 
@@ -172,13 +170,13 @@
 
 
 
-  <link rel="canonical" href="http://lvjunxue.com/2017/02/03/iOS无痕埋点/"/>
+  <link rel="canonical" href="http://lvjunxue.com/archives/2017/09/"/>
 
 
 
 
 
-  <title>无痕埋点 | Cookie's Blog</title>
+  <title>总览 | Cookie's Blog</title>
   
 
 
@@ -197,7 +195,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -335,204 +333,74 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+        
+          
+        
+        Cookie!  17 篇日志。 。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2017">2017</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://lvjunxue.com/2017/02/03/iOS无痕埋点/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cookie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/image.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Cookie's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
-        
-          <h1 class="post-title" itemprop="name headline">无痕埋点</h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
+            <a class="post-title-link" href="/2017/09/10/ijkplayer/" itemprop="url">
               
-                <span class="post-meta-item-text">发表于</span>
+                <span itemprop="name">ijkplayer</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-03T16:08:49+08:00">
-                2017-02-03
-              </time>
-            
+            </a>
+        
+      </h2>
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2017/02/03/iOS无痕埋点/" class="leancloud_visitors" data-flag-title="无痕埋点">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>以前都是手动来埋，有时候会忘记，研究了下无痕埋点，省掉了很多东西</p>
-<a id="more"></a>
-<p>Google了很多文章，发现都是面向切面的AOP思想来做的，总结起来就是偷梁换柱的Runtime黑魔法。</p>
-<p>先来一大推的分类。来来来，统一替换埋点的方法。部分点击的分类要考虑深一点，比如UIButton使用UIControl会比较好，UIControl还包含了其他的一些控件。</p>
-<p>那我怎么知道是哪个页面？</p>
-<p>来个plist文件对应表～</p>
-<ul>
-<li><p>(NSString <em>)pageEventID:(BOOL)enterPage<br>{<br>  NSDictionary </em>configDict = [self dictionaryFromUserStatisticsConfigPlist];<br>  NSString *selfClassName = NSStringFromClass([self class]);<br>  return configDict[selfClassName][@”PageEventIDs”][enterPage ? @”Enter” : @”Leave”];<br>}</p>
-</li>
-<li><p>(NSDictionary <em>)dictionaryFromUserStatisticsConfigPlist<br>{<br>  NSString </em>filePath = [[NSBundle mainBundle] pathForResource:@”Config” ofType:@”plist”];<br>  NSDictionary *dic = [NSDictionary dictionaryWithContentsOfFile:filePath];<br>  return dic;<br>}</p>
-</li>
-</ul>
-<p>可能是记录blog，所以写的比较粗糙。</p>
-<p>还有埋点的时候要善于使用XCTAssert。</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>您的支持将鼓励我继续创作，谢谢！</div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-      <div id="wechat" style="display: inline-block">
-        <img id="wechat_qr" src="/images/wechat.png" alt="Cookie 微信支付"/>
-        <p>微信支付</p>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2017-09-10T19:27:11+08:00"
+              content="2017-09-10" >
+          09-10
+        </time>
       </div>
-    
 
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.png" alt="Cookie 支付宝"/>
-        <p>支付宝</p>
-      </div>
-    
-
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/iOS进阶/" rel="tag"><i class="fa fa-tag"></i> -iOS进阶</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2017/01/05/WebRTC/" rel="next" title="WebRTC">
-                <i class="fa fa-chevron-left"></i> WebRTC
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/03/iOS组件化/" rel="prev" title="组件化">
-                组件化 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -540,15 +408,6 @@
 
 
           
-
-  
-    <div class="comments" id="comments">
-      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDU1OC8xMTA5Ng=="></div>
-    </div>
-
-  
-
-
 
         </div>
         
@@ -784,10 +643,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -816,17 +671,6 @@
 
 
 
-  
-    <script type="text/javascript">
-      (function(d, s) {
-        var j, e = d.getElementsByTagName(s)[0];
-        if (typeof LivereTower === 'function') { return; }
-        j = d.createElement(s);
-        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-        j.async = true;
-        e.parentNode.insertBefore(j, e);
-      })(document, 'script');
-    </script>
   
 
 

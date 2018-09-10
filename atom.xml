@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lvjunxue.com/"/>
-  <updated>2018-08-21T03:41:13.657Z</updated>
+  <updated>2018-09-10T15:44:31.595Z</updated>
   <id>http://lvjunxue.com/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ijkplayer</title>
+    <link href="http://lvjunxue.com/2017/09/10/ijkplayer/"/>
+    <id>http://lvjunxue.com/2017/09/10/ijkplayer/</id>
+    <published>2017-09-10T11:27:11.000Z</published>
+    <updated>2018-09-10T15:44:31.595Z</updated>
+    
+    <content type="html"><![CDATA[<p>生活不易啊，继续学习啊ijkplayer。</p><a id="more"></a><p><a href="https://github.com/Bilibili/ijkplayer" target="_blank" rel="noopener">B站GitHub</a>，先下载个ijkplayer吧。</p><p>默认为最少支持, 如果足够你使用, 可以跳过这一步. 否则可以改为以下配置:<br>module-default.sh 更多的编解码器/格式<br>module-lite-hevc.sh 较少的编解码器/格式(包括hevc)<br>module-lite.sh 较少的编解码器/格式(默认情况)</p><p>进入 config 目录<br>cd config<br>删除当前的 module.sh 文件<br>rm module.sh<br>可根据需要替换为<code>module-default.sh</code>, <code>module-lite-hevc.sh</code>, <code>module-lite.sh</code><br>创建软链接 module.sh 指向 module-lite-hevc.sh<br>ln -s module-lite-hevc.sh module.sh</p><p>em…编译，过程需要下载ffmpeg，毕竟基于ffmpeg嘛。打开终端，cd到ijkplayer-master，执行 ./init-ios.sh 时间可能会有点长。</p><p>支持https设置<br>获取 openssl 并初始化<br>./init-ios-openssl.sh</p><p>启用 openssl 组件方法<br>echo ‘export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-openssl”‘ &gt;&gt; ../config/module.sh<br>或者<br>vim ../config/module.sh<br>export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-openssl”</p><p>cd ios<br>./compile-ffmpeg.sh clean<br>./compile-openssl.sh all<br>过程是屏幕一顿飞，会出现警告，别慌！！！<br>如果不需要https以上步骤可以省略掉。</p><p>执行 ./compile-ffmpeg.sh all 中间可能会卡顿一下，然后一顿滚屏，别停止了喔。</p><p>./libavutil/arm/asm.S:50:9: error: unknown directive<br>.arch armv7-a<br>^</p><p>如果出这个错误。在 compile-ffmpeg.sh 中删除 armv7<br>FF_ALL_ARCHS_IOS8_SDK=”arm64 i386 x86_64”<br>再重新执行: ./compile-ffmpeg.sh all</p><p>然后运行IJKMediaDemo。把libcrypto.a和libssl.a加进去。</p><p>应该就可以使用了。只能看看在线的给你们一个地址试试吧，<a href="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" target="_blank" rel="noopener">http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4</a></p><p><a href="https://gcs-vimeo.akamaized.net/exp=1536608263~acl=%2A%2F623685558.mp4%2A~hmac=ac4bea3eee7fd318322ce65b675f742017a84c294aa0ac57f8480aa9bfd80037/vimeo-prod-skyfire-std-us/01/2670/7/188350983/623685558.mp4" target="_blank" rel="noopener">https://gcs-vimeo.akamaized.net/exp=1536608263~acl=%2A%2F623685558.mp4%2A~hmac=ac4bea3eee7fd318322ce65b675f742017a84c294aa0ac57f8480aa9bfd80037/vimeo-prod-skyfire-std-us/01/2670/7/188350983/623685558.mp4</a></p><p>打包 framwork完成最后的工作！！！<br>open IJKMediaPlayer/IJKMediaPlayer.xcodeproj</p><p>配置 Release 模式<br>打包真机 framework<br>如果之前删除了armv7，注释include “armv7/avconfig.h”<br>command+b<br>打包模拟器 framework<br>command+b<br>在Products里有IJKMediaFramework.framework，右键，show in Finder</p><p>合并 framework</p><p>cd 到 Products目录下lipo -create 真机framework路径 模拟器framework路径 -output 合并的文件路径</p><p>lipo -create Release-iphoneos/IJKMediaFramework.framework/IJKMediaFramework Release-iphonesimulator/IJKMediaFramework.framework/IJKMediaFramework -output IJKMediaFramework</p><p>生成了IJKMediaFramework文件，拖入真机或模拟器的framework中，替换掉之前的IJKMediaFramework，之后IJKMediaFramework.framework可以导入工程了。</p><p>添加下列依赖到工程<br>libc++.tbd<br>libz.tbd<br>libbz2.tbd<br>AudioToolbox.framework<br>UIKit.framework<br>CoreGraphics.framework<br>AVFoundation.framework<br>CoreMedia.framework<br>CoreVideo.framework<br>MediaPlayer.framework<br>MobileCoreServices.framework<br>OpenGLES.framework<br>QuartzCore.framework<br>VideoToolbox.framework</p><p>在Header Search Paths加入头文件的路径。</p><p>另外如果要支持rtsp<br>在 ijkplayer-master 下的 config 中，打开 module-lite.sh<br>将 export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –disable-protocol=rtp”<br>修改为 export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-protocol=rtp”<br>并添加 export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-demuxer=rtsp”<br>export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-decoder=mjpeg”<br>export COMMON_FF_CFG_FLAGS=”$COMMON_FF_CFG_FLAGS –enable-demuxer=mjpeg”<br>然后命令行执行:<br>rm module.sh<br>ln -s module-lite.sh module.sh<br>在执行cd到ios那步。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;生活不易啊，继续学习啊ijkplayer。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="-iOS进阶" scheme="http://lvjunxue.com/tags/iOS%E8%BF%9B%E9%98%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>Cocoa Touch</title>
