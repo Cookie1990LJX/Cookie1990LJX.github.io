@@ -118,7 +118,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-iOS进阶," />
 
 
 
@@ -131,16 +131,18 @@
 
 
 
-<meta name="description" content="嘴角上扬、看尽世态炎凉">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Cookie&#39;s Blog">
-<meta property="og:url" content="http://lvjunxue.com/tags/OC杂记/index.html">
+<meta name="description" content="ReactNative内容。此文只献给那些没用过，还在排坑的小伙伴们。有错误内容还请指出。">
+<meta name="keywords" content="-iOS进阶">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ReactNative">
+<meta property="og:url" content="http://lvjunxue.com/2017/09/10/ReactNative/index.html">
 <meta property="og:site_name" content="Cookie&#39;s Blog">
-<meta property="og:description" content="嘴角上扬、看尽世态炎凉">
+<meta property="og:description" content="ReactNative内容。此文只献给那些没用过，还在排坑的小伙伴们。有错误内容还请指出。">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-29T03:40:05.108Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Cookie&#39;s Blog">
-<meta name="twitter:description" content="嘴角上扬、看尽世态炎凉">
+<meta name="twitter:title" content="ReactNative">
+<meta name="twitter:description" content="ReactNative内容。此文只献给那些没用过，还在排坑的小伙伴们。有错误内容还请指出。">
 
 
 
@@ -170,13 +172,13 @@
 
 
 
-  <link rel="canonical" href="http://lvjunxue.com/tags/OC杂记/"/>
+  <link rel="canonical" href="http://lvjunxue.com/2017/09/10/ReactNative/"/>
 
 
 
 
 
-  <title>标签: -OC杂记 | Cookie's Blog</title>
+  <title>ReactNative | Cookie's Blog</title>
   
 
 
@@ -195,7 +197,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -333,54 +335,196 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>-OC杂记<small>标签</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://lvjunxue.com/2017/09/10/ReactNative/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cookie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/image.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Cookie's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2016/06/06/真机测试如何拿到本地资源/" itemprop="url">
-              
-                <span itemprop="name">真机测试如何拿到本地资源</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">ReactNative</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-06T17:09:32+08:00"
-              content="2016-06-06" >
-          06-06
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-10T19:27:11+08:00">
+                2017-09-10
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/09/10/ReactNative/" class="leancloud_visitors" data-flag-title="ReactNative">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>ReactNative内容。此文只献给那些没用过，还在排坑的小伙伴们。有错误内容还请指出。</p>
+<a id="more"></a>
+<p><a href="https://reactnative.cn/docs/integration-with-existing-apps/" target="_blank" rel="noopener">集成到现有原生应用</a>如过你还没有安装过或者没使用过，去中文网查看相关流程。</p>
+<p>pod文件内加入基本的配置<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pod 'React', :path =&gt; './RNComponent/node_modules/react-native', :subspecs =&gt; [</span><br><span class="line">    'Core',</span><br><span class="line">    'CxxBridge', # 如果RN版本 &gt;= 0.47则加入此行</span><br><span class="line">    'DevSupport', # 如果RN版本 &gt;= 0.43，则需要加入此行才能开启开发者菜单</span><br><span class="line">    'RCTText',</span><br><span class="line">    'RCTNetwork',</span><br><span class="line">    'RCTWebSocket', # 调试功能需要此模块</span><br><span class="line">    'RCTAnimation', # FlatList和原生动画功能需要此模块</span><br><span class="line">    <span class="meta">#在这里继续添加你所需要的其他RN模块</span></span><br><span class="line">]</span><br><span class="line"><span class="meta">#如果你的RN版本 &gt;= 0.42.0，则加入下面这行</span></span><br><span class="line">pod 'yoga', :path =&gt; './RNComponent/node_modules/react-native/ReactCommon/yoga'</span><br><span class="line"></span><br><span class="line"><span class="meta">#如果RN版本 &gt;= 0.45则加入下面三个第三方编译依赖</span></span><br><span class="line">pod 'DoubleConversion', :podspec =&gt; './RNComponent/node_modules/react-native/third-party-podspecs/DoubleConversion.podspec'</span><br><span class="line">pod 'glog', :podspec =&gt; './RNComponent/node_modules/react-native/third-party-podspecs/glog.podspec'</span><br><span class="line">pod 'Folly', :podspec =&gt; './RNComponent/node_modules/react-native/third-party-podspecs/Folly.podspec'</span><br></pre></td></tr></table></figure></p>
+<p>具体内容我就不说了。记录下我的错误问题。</p>
+<p>version0.57.1版本的时候出现问题记录：<br>[!] CocoaPods could not find compatible versions for pod “Folly”:<br>In Podfile:<br>Folly (from <code>./RNComponent/node_modules/react-native/third-party-podspecs/Folly.podspec</code>)</p>
+<p>Specs satisfying the <code>Folly (from</code>./RNComponent/node_modules/react-native/third-party-podspecs/Folly.podspec<code>)</code> dependency were found, but they required a higher minimum deployment target.</p>
+<p>三个第三方编译依赖Folly需要9.0以上：<br>修改platform :ios,’9.0’<br>they required a higher minimum deployment target.这句话提示怎么做。</p>
+<p>如果你使用MLeaksFinder间接导入FBRetainCycleDetector。运行app会报错<br>Array has incomplete element type ‘struct rcd_rebinding’</p>
+<p>原因是RN和FBRetainCycleDetector里都有<br>fishhook.c<br>fishhook.h<br>把FBRetainCycleDetector里的修改成<br>rcd_fishhook.c<br>rcd_fishhook.h<br>或者，坐等facebook更新喽。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>您的支持将鼓励我继续创作，谢谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat.png" alt="Cookie 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="Cookie 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS进阶/" rel="tag"><i class="fa fa-tag"></i> -iOS进阶</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/10/ijkplayer/" rel="next" title="ijkplayer">
+                <i class="fa fa-chevron-left"></i> ijkplayer
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -388,6 +532,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDU1OC8xMTA5Ng=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -623,6 +776,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -651,6 +808,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
