@@ -139,7 +139,7 @@
 <meta property="og:site_name" content="Cookie&#39;s Blog">
 <meta property="og:description" content="接上一个篇，iOS基础。以下答案均为自己想法，有一些答案没有往深处去挖，如有错误跪求指出。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-11T05:12:10.630Z">
+<meta property="og:updated_time" content="2018-10-11T05:14:15.747Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS基础">
 <meta name="twitter:description" content="接上一个篇，iOS基础。以下答案均为自己想法，有一些答案没有往深处去挖，如有错误跪求指出。">
@@ -430,7 +430,7 @@
         <p>接上一个篇，iOS基础。以下答案均为自己想法，有一些答案没有往深处去挖，如有错误跪求指出。</p>
 <p><font color="#0099ff"></font><br><a id="more"></a><br>给你瞅瞅什么是开局一刀，后面把你砍成渣！！！</p>
 <p><font color="#0099ff">@property的本质是什么？</font></p>
-<p><table><tr><td bgcolor="#1C1C1C">实例变量+get方法+set方法,也就是说使用@property系统会自动生成setter和getter方法。</td></tr></table></p>
+<p><table><tr><td bgcolor="#1C1C1C"><font color="#DCDCDC">实例变量+get方法+set方法,也就是说使用@property系统会自动生成setter和getter方法。</font></td></tr></table></p>
 <p><font color="#0099ff">@property 后面可以有哪些修饰符？</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nonatomic，atomic，strong，copy，retain，weak，assign，readonly，writeonly，readwrite。</span><br></pre></td></tr></table></figure></p>
 <p>接下来问题来了，<font color="#0099ff">strong和copy的区别？</font>问完还可以问<font color="#0099ff">copy和mutablecopy区别？</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">源头不可变的strong和copy没区别，都是浅拷贝。源头可变的strong是浅，copy是深。其实这个很好记copy思想就是不能变。至于mutablecopy就是深，我可不管你能不能变。如果你还是不明白，你最好写一个小Demo去深入的看看结果。</span><br></pre></td></tr></table></figure></p>
 <p><font color="#0099ff">如何让自己的类用 copy 修饰符？如何重写带 copy 关键字的 setter？</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">需声明该类遵从 NSCopying 协议</span><br><span class="line">实现 NSCopying 协议的方法。该协议只有一个方法:- (id)copyWithZone:(NSZone *)zone;</span><br></pre></td></tr></table></figure></p>
