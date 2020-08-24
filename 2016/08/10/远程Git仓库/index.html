@@ -139,7 +139,7 @@
 <meta property="og:site_name" content="Cookie&#39;s Blog">
 <meta property="og:description" content="脑子不好用了，总是忘记点啥，还是备注下吧">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-16T05:12:00.959Z">
+<meta property="og:updated_time" content="2020-08-24T08:12:27.744Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="远程Git仓库">
 <meta name="twitter:description" content="脑子不好用了，总是忘记点啥，还是备注下吧">
@@ -445,13 +445,22 @@
 <li>git add .  提交新文件(new)和被修改(modified)文件，不包括被删除(deleted)文件</li>
 </ul>
 <p>$ git status    看看是不是都变绿了</p>
-<p>$ git commit -m “首次提交内容，等待上传其他基础组件”</p>
-<p>上传代码<br>$ git push origin master</p>
-<p>打标签，并且把标签提交到远程私地址$ git tag<br>$ git tag -a ‘0.1.0’ -m “标签显示内容”<br>上传标签    $ git push –tags</p>
-<p>验证spec并提交到本地私有索引库<br>验证本地 $ pod lib lint<br>验证远程 $ pod spec lint<br>都通过后提交本地<br>$ pod repo push XXX XXX.podspec</p>
+<p>$ git commit -m “message”<br>阿哥in<br>上传代码<br>$ git push origin master</p>
+<p>强制提交 git push -u origin master -f</p>
+<p>打标签，并且把标签提交到远程私地址$ git tag<br>$ git tag -a ‘0.0.4’ -m “首次测试完成版”<br>上传标签    $ git push –tags</p>
+<p>验证spec并提交到本地私有索引库<br>验证本地 $ pod lib lint<br>验证远程 $ pod spec lint</p>
+<p>首次提交时候，发现–no-clean的错误，可能是因为没有版本的问题，–allow-warnings</p>
+<p>使用framework时，后面添加–use-libraries<br>有忽略警告时，后天添加–no-clean</p>
+<p>都通过后提交本地<br>$ pod repo push XXX XXX.podspec</p>
 <p>使用的时候   soure’adress’</p>
 <p>pod ‘spec’<br>pod ‘spec/xxx’<br>pod ‘spec’, :subspecs =&gt; [‘xxx’, ‘xxx’]</p>
 <p>验证spec的时候如果你引用了私有的库    在验证后面加上–sources=地址,master     更多内容查看help</p>
+<p>clang -x objective-c -rewrite-objc -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk</p>
+<p>git branch    //当前本地分支列表<br>git branch -r       //当前库分支列表</p>
+<p>git checkout develop   //checkout下 想合并的分支<br>git merge AdHub-Cookie      //将分支merge到当前分支下<br>git add .       //提交<br>git push        //推送上去</p>
+<p>git branch -d AdHub-Cookie      //删除本地分支<br>git push origin –delete AdHub-Cookie       //删除远程分支</p>
+<p>还是可以看到已删除的远程分支，时间一长就显的非常乱了<br>以下是解决方法：<br>git remote show origin //可以看到删除分支情况<br>git remote prune origin<br>再执行<br>git branch -a</p>
+<p>在某个分支下拉取代码<br>git checkout -b Feature-Networking<br>git push origin Feature-Networking</p>
 
       
     </div>
@@ -600,7 +609,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -613,7 +622,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -673,7 +682,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
